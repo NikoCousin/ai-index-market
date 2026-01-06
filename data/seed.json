@@ -1,0 +1,357 @@
+{
+  "categories": [
+    {
+      "name": "LLMs",
+      "slug": "llms",
+      "description": "Chat and reasoning models"
+    },
+    { "name": "Image Generation", "slug": "image-generation" },
+    { "name": "Video Generation", "slug": "video-generation" },
+    { "name": "Audio / Voice", "slug": "audio-voice" },
+    { "name": "Automation / Agents", "slug": "automation-agents" },
+    { "name": "Developer Tools", "slug": "developer-tools" },
+    { "name": "Productivity", "slug": "productivity" },
+    { "name": "Marketing Tools", "slug": "marketing-tools" }
+  ],
+  "useCases": [
+    { "name": "Writing", "slug": "writing" },
+    { "name": "Coding", "slug": "coding" },
+    { "name": "Design", "slug": "design" },
+    { "name": "Research", "slug": "research" },
+    { "name": "Automation", "slug": "automation" },
+    { "name": "Social media", "slug": "social-media" }
+  ],
+  "tools": [
+    {
+      "name": "ChatGPT",
+      "slug": "chatgpt",
+      "tagline": "General-purpose AI assistant for writing, coding, and analysis.",
+      "descriptionShort": "The industry-leading AI chatbot by OpenAI.",
+      "descriptionLong": "ChatGPT is a conversational AI model developed by OpenAI. It interacts in a conversational way, enabling it to answer follow-up questions, admit its mistakes, challenge incorrect premises, and reject inappropriate requests.",
+      "status": "ACTIVE",
+      "skillLevel": "BEGINNER",
+      "pricingModel": "FREEMIUM",
+      "platforms": ["WEB", "IOS", "ANDROID"],
+      "categories": ["llms", "productivity"],
+      "useCases": ["writing", "coding", "analysis"],
+      "links": {
+        "websiteUrl": "https://chat.openai.com",
+        "twitter": "https://twitter.com/openai"
+      },
+      "pros": [
+        "Extremely versatile across writing and coding tasks",
+        "Massive plugin ecosystem and custom GPTs",
+        "Best-in-class reasoning capabilities (GPT-4)"
+      ],
+      "cons": [
+        "Knowledge cutoff can be outdated without browsing",
+        "Free version (GPT-3.5) is significantly weaker",
+        "Can be verbose or hallucinate facts"
+      ],
+      "specs": {
+        "developer": "OpenAI",
+        "launchYear": "2022",
+        "hasApi": true,
+        "mobileApp": true
+      },
+      "lastVerifiedAt": "2023-10-27T00:00:00Z",
+      "score": {
+        "popularityScore": 98,
+        "trendScore": 80,
+        "freshnessScore": 95,
+        "communityScore": 90,
+        "rankScore": 92
+      }
+    },
+    {
+      "name": "Claude",
+      "slug": "claude",
+      "tagline": "Strong reasoning and long-form writing assistant",
+      "descriptionShort": "Writing, analysis, and coding help.",
+      "descriptionLong": "Claude is a next-generation AI assistant built for work and trained to be safe, accurate, and secure. It excels at reading long documents and providing nuanced, human-like answers.",
+      "status": "ACTIVE",
+      "skillLevel": "BEGINNER",
+      "pricingModel": "FREEMIUM",
+      "platforms": ["WEB", "IOS", "API"],
+      "categories": ["llms", "productivity"],
+      "useCases": ["writing", "coding", "research"],
+      "links": { "websiteUrl": "https://claude.ai" },
+      "pros": [
+        "Massive context window (200k+ tokens) for analyzing books/codebases",
+        "More natural, less robotic writing style than GPT",
+        "Strong focus on safety and reduced toxicity"
+      ],
+      "cons": [
+        "Fewer third-party plugins than ChatGPT",
+        "Rate limits on the free tier can be strict",
+        "No image generation capabilities (text only)"
+      ],
+      "specs": {
+        "developer": "Anthropic",
+        "launchYear": "2023",
+        "hasApi": true,
+        "mobileApp": true
+      },
+      "lastVerifiedAt": "2026-01-05T00:00:00.000Z",
+      "score": {
+        "popularityScore": 85,
+        "trendScore": 78,
+        "freshnessScore": 80,
+        "communityScore": 60,
+        "rankScore": 84
+      }
+    },
+    {
+      "name": "Gemini",
+      "slug": "gemini",
+      "tagline": "Google AI assistant integrated with Google ecosystem",
+      "descriptionShort": "Chat, search-assisted reasoning, and multimodal.",
+      "descriptionLong": "Gemini is Google's most capable AI model, built from the ground up to be multimodal. It can generalize and seamlessly understand, operate across, and combine different types of information including text, code, audio, image, and video.",
+      "status": "ACTIVE",
+      "skillLevel": "BEGINNER",
+      "pricingModel": "FREEMIUM",
+      "platforms": ["WEB", "IOS", "ANDROID", "API"],
+      "categories": ["llms", "productivity"],
+      "useCases": ["writing", "research"],
+      "links": { "websiteUrl": "https://gemini.google.com" },
+      "pros": [
+        "Native integration with Google Docs, Drive, and Gmail",
+        "True multimodal capabilities (understands video and audio)",
+        "Fast response times with Flash models"
+      ],
+      "cons": [
+        "Image generation can be restricted by region or safety filters",
+        "Can be overly sensitive with refusals on controversial topics",
+        "UI can feel cluttered with ecosystem suggestions"
+      ],
+      "specs": {
+        "developer": "Google",
+        "launchYear": "2023",
+        "hasApi": true,
+        "mobileApp": true
+      },
+      "lastVerifiedAt": "2026-01-05T00:00:00.000Z",
+      "score": {
+        "popularityScore": 80,
+        "trendScore": 70,
+        "freshnessScore": 78,
+        "communityScore": 55,
+        "rankScore": 79
+      }
+    },
+    {
+      "name": "Midjourney",
+      "slug": "midjourney",
+      "tagline": "High-quality image generation",
+      "descriptionShort": "Text-to-image creative tool.",
+      "descriptionLong": "Midjourney is an independent research lab exploring new mediums of thought and expanding the imaginative powers of the human species. It is widely considered the gold standard for AI artistic generation.",
+      "status": "ACTIVE",
+      "skillLevel": "INTERMEDIATE",
+      "pricingModel": "PAID",
+      "platforms": ["WEB"],
+      "categories": ["image-generation", "design"],
+      "useCases": ["design"],
+      "links": { "websiteUrl": "https://www.midjourney.com" },
+      "pros": [
+        "Industry-leading artistic quality and photorealism",
+        "Deep control over style, aspect ratio, and variation",
+        "Active community for prompt inspiration"
+      ],
+      "cons": [
+        "Primary interface is via Discord (can be confusing)",
+        "No free tier available currently",
+        "Prompting requires a learning curve (parameters)"
+      ],
+      "specs": {
+        "developer": "Midjourney Inc.",
+        "launchYear": "2022",
+        "hasApi": false,
+        "mobileApp": false
+      },
+      "lastVerifiedAt": "2026-01-05T00:00:00.000Z",
+      "score": {
+        "popularityScore": 78,
+        "trendScore": 60,
+        "freshnessScore": 70,
+        "communityScore": 65,
+        "rankScore": 76
+      }
+    },
+    {
+      "name": "Runway",
+      "slug": "runway",
+      "tagline": "Video creation and editing with AI",
+      "descriptionShort": "Text-to-video and video editing.",
+      "descriptionLong": "A platform for AI video generation and editing workflows.",
+      "status": "ACTIVE",
+      "skillLevel": "INTERMEDIATE",
+      "pricingModel": "FREEMIUM",
+      "platforms": ["WEB"],
+      "categories": ["video-generation"],
+      "useCases": ["design"],
+      "links": { "websiteUrl": "https://runwayml.com" },
+      "lastVerifiedAt": "2026-01-05T00:00:00.000Z",
+      "score": {
+        "popularityScore": 70,
+        "trendScore": 72,
+        "freshnessScore": 75,
+        "communityScore": 50,
+        "rankScore": 71
+      }
+    },
+    {
+      "name": "ElevenLabs",
+      "slug": "elevenlabs",
+      "tagline": "AI voice generation and cloning",
+      "descriptionShort": "Voice, TTS, and narration.",
+      "descriptionLong": "Voice synthesis platform for realistic speech generation.",
+      "status": "ACTIVE",
+      "skillLevel": "BEGINNER",
+      "pricingModel": "FREEMIUM",
+      "platforms": ["WEB", "API"],
+      "categories": ["audio-voice"],
+      "useCases": ["automation"],
+      "links": { "websiteUrl": "https://elevenlabs.io" },
+      "lastVerifiedAt": "2026-01-05T00:00:00.000Z",
+      "score": {
+        "popularityScore": 68,
+        "trendScore": 66,
+        "freshnessScore": 70,
+        "communityScore": 45,
+        "rankScore": 66
+      }
+    },
+    {
+      "name": "n8n",
+      "slug": "n8n",
+      "tagline": "Workflow automation",
+      "descriptionShort": "Automate tasks with nodes and integrations.",
+      "descriptionLong": "Automation platform for connecting services and building workflows.",
+      "status": "ACTIVE",
+      "skillLevel": "INTERMEDIATE",
+      "pricingModel": "FREEMIUM",
+      "platforms": ["WEB"],
+      "categories": ["automation-agents", "productivity"],
+      "useCases": ["automation"],
+      "links": { "websiteUrl": "https://n8n.io" },
+      "lastVerifiedAt": "2026-01-05T00:00:00.000Z",
+      "score": {
+        "popularityScore": 60,
+        "trendScore": 65,
+        "freshnessScore": 65,
+        "communityScore": 55,
+        "rankScore": 62
+      }
+    },
+    {
+      "name": "Cursor",
+      "slug": "cursor",
+      "tagline": "AI-first code editor",
+      "descriptionShort": "Ship faster with AI inside your IDE.",
+      "descriptionLong": "An AI-enabled editor that helps with multi-file coding and refactors.",
+      "status": "ACTIVE",
+      "skillLevel": "BEGINNER",
+      "pricingModel": "PAID",
+      "platforms": ["DESKTOP"],
+      "categories": ["developer-tools", "productivity"],
+      "useCases": ["coding"],
+      "links": { "websiteUrl": "https://cursor.com" },
+      "lastVerifiedAt": "2026-01-05T00:00:00.000Z",
+      "score": {
+        "popularityScore": 58,
+        "trendScore": 75,
+        "freshnessScore": 70,
+        "communityScore": 40,
+        "rankScore": 63
+      }
+    },
+    {
+      "name": "GitHub Copilot",
+      "slug": "github-copilot",
+      "tagline": "AI pair programmer",
+      "descriptionShort": "Code suggestions in your editor.",
+      "descriptionLong": "AI-assisted coding tool integrated with GitHub and popular IDEs.",
+      "status": "ACTIVE",
+      "skillLevel": "BEGINNER",
+      "pricingModel": "PAID",
+      "platforms": ["DESKTOP"],
+      "categories": ["developer-tools"],
+      "useCases": ["coding"],
+      "links": { "websiteUrl": "https://github.com/features/copilot" },
+      "lastVerifiedAt": "2026-01-05T00:00:00.000Z",
+      "score": {
+        "popularityScore": 75,
+        "trendScore": 55,
+        "freshnessScore": 65,
+        "communityScore": 70,
+        "rankScore": 72
+      }
+    },
+    {
+      "name": "Notion AI",
+      "slug": "notion-ai",
+      "tagline": "AI inside Notion for writing and summaries",
+      "descriptionShort": "Docs, summaries, and content generation.",
+      "descriptionLong": "AI features inside Notion for drafting, summarizing, and organizing content.",
+      "status": "ACTIVE",
+      "skillLevel": "BEGINNER",
+      "pricingModel": "PAID",
+      "platforms": ["WEB", "DESKTOP", "IOS", "ANDROID"],
+      "categories": ["productivity"],
+      "useCases": ["writing"],
+      "links": { "websiteUrl": "https://www.notion.so" },
+      "lastVerifiedAt": "2026-01-05T00:00:00.000Z",
+      "score": {
+        "popularityScore": 62,
+        "trendScore": 50,
+        "freshnessScore": 60,
+        "communityScore": 55,
+        "rankScore": 60
+      }
+    },
+    {
+      "name": "Canva",
+      "slug": "canva",
+      "tagline": "Design platform with AI features",
+      "descriptionShort": "Templates, design, and AI assists.",
+      "descriptionLong": "Design tool with AI-powered creation features for marketers and creators.",
+      "status": "ACTIVE",
+      "skillLevel": "BEGINNER",
+      "pricingModel": "FREEMIUM",
+      "platforms": ["WEB", "IOS", "ANDROID", "DESKTOP"],
+      "categories": ["marketing-tools", "design"],
+      "useCases": ["design", "social-media"],
+      "links": { "websiteUrl": "https://www.canva.com" },
+      "lastVerifiedAt": "2026-01-05T00:00:00.000Z",
+      "score": {
+        "popularityScore": 72,
+        "trendScore": 52,
+        "freshnessScore": 60,
+        "communityScore": 65,
+        "rankScore": 68
+      }
+    },
+    {
+      "name": "Descript",
+      "slug": "descript",
+      "tagline": "Audio/video editing with AI",
+      "descriptionShort": "Edit video by editing text.",
+      "descriptionLong": "Editing platform that uses AI to simplify audio and video production.",
+      "status": "ACTIVE",
+      "skillLevel": "INTERMEDIATE",
+      "pricingModel": "FREEMIUM",
+      "platforms": ["DESKTOP", "WEB"],
+      "categories": ["video-generation", "audio-voice", "productivity"],
+      "useCases": ["design"],
+      "links": { "websiteUrl": "https://www.descript.com" },
+      "lastVerifiedAt": "2026-01-05T00:00:00.000Z",
+      "score": {
+        "popularityScore": 55,
+        "trendScore": 48,
+        "freshnessScore": 55,
+        "communityScore": 40,
+        "rankScore": 53
+      }
+    }
+  ]
+}
