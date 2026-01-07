@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { loadSeed, getRelatedTools } from "@/lib/data";
+import VoteButton from "@/components/vote-button";
 
 interface Props {
   params: Promise<{ slug: string }>;
@@ -52,13 +53,19 @@ export default async function ToolPage({ params }: Props) {
         <div className="lg:col-span-2 space-y-8">
           {/* Header Section */}
           <div className="flex items-start gap-6">
-            <div className="h-24 w-24 flex-shrink-0 overflow-hidden rounded-2xl border border-slate-700 shadow-sm bg-slate-800">
-              <img
-                src={getLogoUrl(tool.name)}
-                alt={`${tool.name} logo`}
-                className="h-full w-full object-cover"
-              />
+            {/* === CHANGED: LEFT COLUMN (Logo + Vote Button) === */}
+            <div className="flex flex-col items-center gap-3">
+              {/* Existing Logo Code */}
+              <div className="h-24 w-24 flex-shrink-0 overflow-hidden rounded-2xl border border-slate-700 shadow-sm bg-slate-800">
+                <img
+                  src={getLogoUrl(tool.name)}
+                  alt={`${tool.name} logo`}
+                  className="h-full w-full object-cover"
+                />
+              </div>
             </div>
+            {/* ============================================== */}
+
             <div>
               <h1 className="text-3xl font-bold text-white sm:text-4xl mb-2">
                 {tool.name}
@@ -66,8 +73,9 @@ export default async function ToolPage({ params }: Props) {
               <p className="text-lg text-slate-300 leading-relaxed">
                 {tool.tagline}
               </p>
-
               <div className="mt-4 flex flex-wrap gap-2">
+                {/* The New Vote Button (Vertical Mode) */}
+                <VoteButton slug={tool.slug} />
                 <span className="inline-flex items-center rounded-md bg-slate-800 px-2 py-1 text-xs font-medium text-slate-400 border border-slate-700">
                   {tool.pricingModel}
                 </span>
