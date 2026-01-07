@@ -3,12 +3,20 @@
 import { useSearchParams, usePathname, useRouter } from "next/navigation";
 import { useDebouncedCallback } from "use-debounce";
 
-export default function SearchBar() {
+interface SearchBarProps {
+  handleSearch?: (term: string) => void;
+  value?: string;
+}
+
+export default function SearchBar(props: SearchBarProps = {}) {
+  const { handleSearch, value } = props;
   const searchParams = useSearchParams();
   const pathname = usePathname();
   const { replace } = useRouter();
 
-  const handleSearch = useDebouncedCallback((term: string) => {
+  // If props are provided, use controlled component mode
+  // Otherwise, use URL params mode
+  const urlHandleSearch = useDebouncedCallback((term: string) => {
     const params = new URLSearchParams(searchParams);
 
     if (term) {
@@ -20,6 +28,9 @@ export default function SearchBar() {
     // Kept the fix: { scroll: false } prevents jumping
     replace(`${pathname}?${params.toString()}`, { scroll: false });
   }, 300);
+
+  const onSearch = handleSearch || urlHandleSearch;
+  const inputValue = value !== undefined ? value : searchParams.get("q")?.toString() || "";
 
   return (
     <div className="relative max-w-xl mx-auto">
@@ -43,9 +54,9 @@ export default function SearchBar() {
         placeholder="Search tools (e.g. 'video', 'coding')..."
         className="block w-full rounded-full border border-slate-700 bg-slate-800 py-3 pl-10 pr-3 text-white placeholder-slate-400 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 sm:text-sm shadow-sm transition-colors"
         onChange={(e) => {
-          handleSearch(e.target.value);
+          onSearch(e.target.value);
         }}
-        defaultValue={searchParams.get("q")?.toString()}
+        value={inputValue}
       />
     </div>
   );
