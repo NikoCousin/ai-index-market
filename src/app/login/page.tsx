@@ -147,7 +147,7 @@ function LoginForm() {
           <button
             type="submit"
             disabled={loading}
-            className="w-full rounded-xl bg-blue-600 px-4 py-3 font-bold text-white hover:bg-blue-500 transition-all disabled:opacity-50 disabled:cursor-not-allowed mt-4 cursor-pointer shadow-lg shadow-blue-900/20"
+            className="w-full rounded-xl bg-blue-600 px-4 py-4 font-bold text-white hover:bg-blue-500 transition-all disabled:opacity-50 disabled:cursor-not-allowed mt-4 cursor-pointer shadow-lg shadow-blue-900/20 min-h-[48px] flex items-center justify-center"
           >
             {loading
               ? "Processing..."

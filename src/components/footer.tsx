@@ -111,7 +111,7 @@ export default function Footer() {
             <ul className="space-y-3 text-sm text-slate-400">
               <li>
                 <Link
-                  href="#"
+                  href="/privacy"
                   className="hover:text-blue-400 transition-colors"
                 >
                   Privacy Policy
@@ -119,7 +119,7 @@ export default function Footer() {
               </li>
               <li>
                 <Link
-                  href="#"
+                  href="/terms"
                   className="hover:text-blue-400 transition-colors"
                 >
                   Terms of Service
@@ -146,19 +146,19 @@ export default function Footer() {
             {/* Social Placeholders */}
             <a
               href="#"
-              className="text-slate-500 hover:text-white transition-colors"
+              className="text-slate-500 hover:text-white transition-colors min-h-[44px] min-w-[44px] flex items-center justify-center"
             >
               Twitter
             </a>
             <a
               href="#"
-              className="text-slate-500 hover:text-white transition-colors"
+              className="text-slate-500 hover:text-white transition-colors min-h-[44px] min-w-[44px] flex items-center justify-center"
             >
               GitHub
             </a>
             <a
               href="#"
-              className="text-slate-500 hover:text-white transition-colors"
+              className="text-slate-500 hover:text-white transition-colors min-h-[44px] min-w-[44px] flex items-center justify-center"
             >
               Discord
             </a>

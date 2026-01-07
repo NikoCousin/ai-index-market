@@ -49,7 +49,7 @@ export default function NavbarAuth() {
         <form action={signOutAction}>
           <button
             type="submit"
-            className="text-sm font-medium text-slate-400 hover:text-white transition-colors cursor-pointer"
+            className="text-sm font-medium text-slate-400 hover:text-white transition-colors cursor-pointer min-h-[44px] min-w-[44px] px-2 flex items-center justify-center"
           >
             Sign Out
           </button>
@@ -61,7 +61,7 @@ export default function NavbarAuth() {
   return (
     <Link
       href="/login"
-      className="text-sm font-medium text-slate-400 hover:text-white transition-colors cursor-pointer"
+      className="text-sm font-medium text-slate-400 hover:text-white transition-colors cursor-pointer min-h-[44px] min-w-[44px] px-2 flex items-center justify-center"
     >
       Sign In
     </Link>

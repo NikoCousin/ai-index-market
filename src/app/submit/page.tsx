@@ -104,7 +104,7 @@ export default function SubmitPage() {
           </p>
           <button
             onClick={() => router.push("/")}
-            className="rounded-full bg-green-600 px-6 py-3 font-medium text-white hover:bg-green-500 transition-colors cursor-pointer"
+            className="rounded-full bg-green-600 px-6 py-4 font-medium text-white hover:bg-green-500 transition-colors cursor-pointer min-h-[48px] flex items-center justify-center"
           >
             Back to Homepage
           </button>
@@ -203,7 +203,7 @@ export default function SubmitPage() {
         <button
           disabled={status === "submitting"}
           type="submit"
-          className="w-full rounded-xl bg-blue-600 px-4 py-4 text-center font-bold text-white hover:bg-blue-500 transition-all disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer shadow-lg shadow-blue-900/20"
+          className="w-full rounded-xl bg-blue-600 px-4 py-4 text-center font-bold text-white hover:bg-blue-500 transition-all disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer shadow-lg shadow-blue-900/20 min-h-[48px] flex items-center justify-center"
         >
           {status === "submitting" ? "Saving..." : "Submit for Review"}
         </button>

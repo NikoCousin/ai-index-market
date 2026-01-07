@@ -95,7 +95,7 @@ export default function VoteButton({
     return (
       <button
         onClick={handleVote}
-        className={`group flex flex-col items-center justify-center w-14 h-16 rounded-xl border transition-all duration-200 ease-out active:scale-95 cursor-pointer ${
+        className={`group flex flex-col items-center justify-center w-14 h-20 rounded-xl border transition-all duration-200 ease-out active:scale-95 cursor-pointer min-h-[56px] ${
           hasVoted
             ? "bg-gradient-to-b from-blue-500 to-blue-600 border-blue-400 text-white shadow-lg shadow-blue-500/30"
             : "bg-slate-900 border-slate-700 text-slate-500 hover:border-slate-500 hover:text-white"
@@ -117,7 +117,7 @@ export default function VoteButton({
   return (
     <button
       onClick={handleVote}
-      className={`group flex items-center gap-2 px-4 py-2 rounded-lg border transition-all duration-200 active:scale-95 cursor-pointer ${
+      className={`group flex items-center gap-2 px-4 py-3 rounded-lg border transition-all duration-200 active:scale-95 cursor-pointer min-h-[44px] ${
         hasVoted
           ? "bg-blue-600/20 border-blue-500 text-blue-400 shadow-[0_0_15px_rgba(59,130,246,0.2)]"
           : "bg-slate-800/50 border-slate-700 text-slate-400 hover:bg-slate-800 hover:border-slate-500 hover:text-white"

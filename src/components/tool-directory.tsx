@@ -47,11 +47,34 @@ export default function ToolDirectory({
             </div>
             <input
               type="text"
-              className="block w-full p-4 pl-12 text-sm text-slate-900 border border-slate-200 rounded-full bg-white shadow-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none"
+              className="block w-full p-4 pl-12 text-base sm:text-sm text-slate-900 border border-slate-200 rounded-full bg-white shadow-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none"
               placeholder="Search in this category..."
               value={query}
               onChange={(e) => setQuery(e.target.value)}
             />
+          </div>
+        </div>
+
+        {/* Badges Section */}
+        <div className="flex flex-wrap items-center justify-center gap-4 mt-6">
+          {/* Tracked Badge */}
+          <div className="inline-flex items-center gap-2.5 px-4 py-2.5 rounded-full bg-slate-900/90 backdrop-blur-md border border-slate-700/60 shadow-xl shadow-black/20">
+            <div className="relative flex-shrink-0">
+              <div className="w-2.5 h-2.5 rounded-full bg-green-400 shadow-[0_0_12px_rgba(74,222,128,0.8)]"></div>
+              <div className="absolute inset-0 w-2.5 h-2.5 rounded-full bg-green-400 animate-ping opacity-40"></div>
+            </div>
+            <span className="text-sm font-medium text-white whitespace-nowrap">
+              12 Tools Tracked
+            </span>
+          </div>
+
+          {/* Trending Badge */}
+          <div className="inline-flex items-center gap-2.5 px-4 py-2.5 rounded-full bg-slate-900/90 backdrop-blur-md border border-slate-700/60 shadow-xl shadow-black/20">
+            <span className="text-base flex-shrink-0">🔥</span>
+            <span className="text-sm font-medium text-white whitespace-nowrap">
+              Top Trend:{" "}
+              <span className="text-orange-400 font-semibold">ChatGPT</span>
+            </span>
           </div>
         </div>
       </div>
@@ -59,8 +82,8 @@ export default function ToolDirectory({
       {/* 🟢 2. INJECTED STATS (This renders whatever you pass inside the component) */}
       {children && <div className="mb-10 max-w-5xl mx-auto">{children}</div>}
 
-      {/* 3. THE TABLE SECTION */}
-      <div className="bg-white rounded-xl border border-slate-200 shadow-xl overflow-hidden">
+      {/* 3. THE TABLE SECTION - Desktop */}
+      <div className="hidden md:block bg-white rounded-xl border border-slate-200 shadow-xl overflow-hidden">
         <div className="overflow-x-auto">
           <table className="w-full text-sm text-left">
             <thead className="bg-slate-50 border-b border-slate-100">
@@ -96,6 +119,19 @@ export default function ToolDirectory({
             </tbody>
           </table>
         </div>
+      </div>
+
+      {/* Mobile Card View */}
+      <div className="md:hidden space-y-4">
+        {filteredTools.length > 0 ? (
+          filteredTools.map((tool, index) => (
+            <MobileToolCard key={tool.slug} tool={tool} index={index} />
+          ))
+        ) : (
+          <div className="text-center py-12 text-slate-500 bg-white rounded-xl border border-slate-200 p-8">
+            No tools found for "{query}"
+          </div>
+        )}
       </div>
     </div>
   );
@@ -133,7 +169,7 @@ function ToolRow({ tool, index }: { tool: Tool; index: number }) {
             {tool.name}
           </Link>
         </div>
-        <div className="text-xs text-slate-500 mt-0.5 max-w-[200px] truncate">
+        <div className="text-xs text-slate-500 mt-0.5 max-w-full sm:max-w-[200px] truncate">
           {tool.tagline}
         </div>
       </td>
@@ -157,5 +193,72 @@ function ToolRow({ tool, index }: { tool: Tool; index: number }) {
         +{tool.score?.trendScore}%
       </td>
     </tr>
+  );
+}
+
+// ⬇️ MOBILE CARD COMPONENT
+function MobileToolCard({ tool, index }: { tool: Tool; index: number }) {
+  const [imageError, setImageError] = useState(false);
+
+  return (
+    <Link
+      href={`/tools/${tool.slug}`}
+      className="block bg-white rounded-xl border border-slate-200 shadow-sm p-4 hover:shadow-md transition-all"
+    >
+      <div className="flex items-start gap-4">
+        {/* Logo */}
+        <div className="h-16 w-16 flex-shrink-0 overflow-hidden rounded-xl border border-slate-100 shadow-sm bg-slate-50">
+          {!imageError ? (
+            <img
+              src={`/logos/${tool.slug}.png`}
+              alt={tool.name}
+              className="h-full w-full object-cover"
+              onError={() => setImageError(true)}
+            />
+          ) : (
+            <div className="h-full w-full flex items-center justify-center bg-slate-800 text-white font-bold text-sm">
+              {tool.name.substring(0, 2).toUpperCase()}
+            </div>
+          )}
+        </div>
+
+        {/* Content */}
+        <div className="flex-1 min-w-0">
+          <div className="flex items-start justify-between gap-2 mb-1">
+            <div className="flex-1 min-w-0">
+              <div className="font-semibold text-slate-900 text-base mb-1">
+                #{index + 1} {tool.name}
+              </div>
+              <p className="text-xs text-slate-500 line-clamp-2">
+                {tool.tagline}
+              </p>
+            </div>
+          </div>
+
+          {/* Metadata Row */}
+          <div className="flex items-center gap-3 mt-3 flex-wrap">
+            <span
+              className={`inline-flex items-center rounded-md px-2.5 py-1.5 text-xs font-medium ring-1 ring-inset min-h-[32px] ${
+                tool.pricingModel === "PAID"
+                  ? "bg-purple-50 text-purple-700 ring-purple-700/10"
+                  : tool.pricingModel === "FREE"
+                  ? "bg-green-50 text-green-700 ring-green-600/20"
+                  : "bg-blue-50 text-blue-700 ring-blue-700/10"
+              }`}
+            >
+              {tool.pricingModel}
+            </span>
+            <div className="flex items-center gap-4 text-xs text-slate-600">
+              <span className="font-mono font-medium">
+                Rank: {tool.score?.rankScore}
+              </span>
+              <span className="text-green-600 font-medium">
+                Trend: +{tool.score?.trendScore}%
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </Link>
   );
 }

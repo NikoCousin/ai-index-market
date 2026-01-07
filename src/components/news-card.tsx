@@ -1,5 +1,8 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
+import { useState } from "react";
 
 export type NewsItem = {
   id: number;
@@ -48,6 +51,30 @@ function getTimeAgo(dateString: string): string {
 }
 
 export default function NewsCard({ news }: { news: NewsItem }) {
+  const [imageError, setImageError] = useState(false);
+  const [imageSrc, setImageSrc] = useState(news.image_url);
+
+  // Fallback image - a gradient placeholder
+  const fallbackImage = `data:image/svg+xml,${encodeURIComponent(
+    `<svg width="1200" height="600" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" style="stop-color:#1e293b;stop-opacity:1" />
+          <stop offset="100%" style="stop-color:#0f172a;stop-opacity:1" />
+        </linearGradient>
+      </defs>
+      <rect width="1200" height="600" fill="url(#grad)"/>
+      <text x="50%" y="50%" font-family="Arial, sans-serif" font-size="48" fill="#64748b" text-anchor="middle" dominant-baseline="middle">${news.source_domain}</text>
+    </svg>`
+  )}`;
+
+  const handleImageError = () => {
+    if (!imageError) {
+      setImageError(true);
+      setImageSrc(fallbackImage);
+    }
+  };
+
   return (
     <Link
       href={news.source_url}
@@ -57,13 +84,25 @@ export default function NewsCard({ news }: { news: NewsItem }) {
     >
       {/* Top Half: Image */}
       <div className="relative w-full h-48 overflow-hidden bg-slate-800">
-        <Image
-          src={news.image_url}
-          alt={news.title}
-          fill
-          className="object-cover group-hover:scale-105 transition-transform duration-500"
-          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-        />
+        {!imageError ? (
+          <Image
+            src={imageSrc}
+            alt={news.title}
+            fill
+            className="object-cover group-hover:scale-105 transition-transform duration-500"
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+            onError={handleImageError}
+            unoptimized={imageSrc.startsWith("data:")}
+          />
+        ) : (
+          <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-slate-800 to-slate-900">
+            <div className="text-center px-4">
+              <div className="text-2xl font-bold text-slate-400 mb-1">
+                {news.source_domain.substring(0, 2).toUpperCase()}
+              </div>
+            </div>
+          </div>
+        )}
       </div>
 
       {/* Bottom Half: Content */}

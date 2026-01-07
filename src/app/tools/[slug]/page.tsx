@@ -103,7 +103,7 @@ export default async function ToolPage({ params }: Props) {
                 <Link
                   key={cat}
                   href={`/categories/${cat}`}
-                  className="rounded-full border border-slate-700 bg-slate-800 px-3 py-1 text-sm text-slate-300 hover:border-blue-500 hover:text-blue-400 transition-colors"
+                  className="rounded-full border border-slate-700 bg-slate-800 px-3 py-2 text-sm text-slate-300 hover:border-blue-500 hover:text-blue-400 transition-colors min-h-[36px] flex items-center justify-center"
                 >
                   #{cat}
                 </Link>
@@ -283,7 +283,7 @@ export default async function ToolPage({ params }: Props) {
               href={tool.links?.websiteUrl || "#"}
               target="_blank"
               rel="noopener noreferrer"
-              className="block w-full rounded-xl bg-blue-600 px-4 py-3 text-center text-sm font-semibold text-white hover:bg-blue-500 transition-colors"
+              className="block w-full rounded-xl bg-blue-600 px-4 py-4 text-center text-sm font-semibold text-white hover:bg-blue-500 transition-colors min-h-[48px] flex items-center justify-center"
             >
               Visit Website ↗
             </a>

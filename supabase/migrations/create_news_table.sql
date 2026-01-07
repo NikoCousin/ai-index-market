@@ -64,7 +64,7 @@ INSERT INTO news (title, summary, image_url, source_url, source_domain, publishe
 (
   'Google DeepMind''s AlphaFold 3 Predicts Protein Interactions with 90% Accuracy',
   'Google DeepMind has released AlphaFold 3, a revolutionary AI system that can predict how proteins interact with DNA, RNA, and other molecules with unprecedented accuracy. The breakthrough could accelerate drug discovery and advance our understanding of biological processes.',
-  'https://images.unsplash.com/photo-1559757148-5c350d0e3f8a?w=1200&h=600&fit=crop',
+  'https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=1200&h=600&fit=crop&auto=format',
   'https://www.nature.com/articles/alphafold3-release',
   'nature.com',
   NOW() - INTERVAL '1 week',
