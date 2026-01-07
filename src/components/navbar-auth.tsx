@@ -5,6 +5,7 @@ import Link from "next/link";
 import { createClient } from "@/lib/supabase/client";
 import { useRouter } from "next/navigation";
 import { User } from "@supabase/supabase-js";
+import { signOutAction } from "@/app/actions";
 
 export default function NavbarAuth() {
   const [user, setUser] = useState<User | null>(null);
@@ -39,23 +40,20 @@ export default function NavbarAuth() {
     };
   }, [supabase, router]);
 
-  const handleSignOut = async () => {
-    await supabase.auth.signOut();
-    // The listener above will handle the UI update automatically
-  };
-
   if (user) {
     return (
       <div className="flex items-center gap-4">
         <div className="hidden md:block text-xs text-slate-400">
           {user.email}
         </div>
-        <button
-          onClick={handleSignOut}
-          className="text-sm font-medium text-slate-400 hover:text-white transition-colors cursor-pointer"
-        >
-          Sign Out
-        </button>
+        <form action={signOutAction}>
+          <button
+            type="submit"
+            className="text-sm font-medium text-slate-400 hover:text-white transition-colors cursor-pointer"
+          >
+            Sign Out
+          </button>
+        </form>
       </div>
     );
   }
