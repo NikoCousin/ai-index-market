@@ -111,6 +111,90 @@ export default async function ToolPage({ params }: Props) {
             </div>
           </div>
 
+          {/* Latest Updates Section */}
+          {tool.updates && tool.updates.length > 0 && (
+            <div className="rounded-2xl border border-slate-800 bg-slate-900/50 p-8">
+              <h2 className="text-xl font-bold text-white mb-6">
+                Latest Updates
+              </h2>
+              <div className="relative">
+                {/* Vertical Timeline Line */}
+                <div className="absolute left-6 top-0 bottom-0 w-0.5 bg-slate-700"></div>
+
+                {/* Timeline Items */}
+                <div className="space-y-8">
+                  {tool.updates.map((update, index) => {
+                    const getTypeColor = () => {
+                      switch (update.type) {
+                        case "MAJOR":
+                          return "bg-blue-500 border-blue-400";
+                        case "MINOR":
+                          return "bg-slate-500 border-slate-400";
+                        case "NEWS":
+                          return "bg-purple-500 border-purple-400";
+                        default:
+                          return "bg-slate-500 border-slate-400";
+                      }
+                    };
+
+                    const getTypeBadgeColor = () => {
+                      switch (update.type) {
+                        case "MAJOR":
+                          return "bg-blue-500/20 text-blue-400 border-blue-500/30";
+                        case "MINOR":
+                          return "bg-slate-500/20 text-slate-400 border-slate-500/30";
+                        case "NEWS":
+                          return "bg-purple-500/20 text-purple-400 border-purple-500/30";
+                        default:
+                          return "bg-slate-500/20 text-slate-400 border-slate-500/30";
+                      }
+                    };
+
+                    return (
+                      <div key={index} className="relative flex gap-6">
+                        {/* Timeline Dot */}
+                        <div className="relative z-10 flex-shrink-0">
+                          <div
+                            className={`h-12 w-12 rounded-full border-2 ${getTypeColor()} flex items-center justify-center shadow-lg`}
+                          >
+                            <div className="h-3 w-3 rounded-full bg-white"></div>
+                          </div>
+                        </div>
+
+                        {/* Content */}
+                        <div className="flex-1 pb-8">
+                          <div className="flex items-center gap-3 mb-2">
+                            <span
+                              className={`inline-flex items-center rounded-md px-2.5 py-0.5 text-xs font-semibold border ${getTypeBadgeColor()}`}
+                            >
+                              {update.type}
+                            </span>
+                            <span className="text-sm text-slate-400">
+                              {new Date(update.date).toLocaleDateString(
+                                "en-US",
+                                {
+                                  year: "numeric",
+                                  month: "long",
+                                  day: "numeric",
+                                }
+                              )}
+                            </span>
+                          </div>
+                          <h3 className="text-lg font-semibold text-white mb-2">
+                            {update.title}
+                          </h3>
+                          <p className="text-slate-300 leading-relaxed">
+                            {update.description}
+                          </p>
+                        </div>
+                      </div>
+                    );
+                  })}
+                </div>
+              </div>
+            </div>
+          )}
+
           {/* Pros & Cons Section */}
           {(tool.pros || tool.cons) && (
             <div className="grid md:grid-cols-2 gap-6">

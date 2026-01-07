@@ -55,6 +55,32 @@
         "mobileApp": true
       },
       "lastVerifiedAt": "2023-10-27T00:00:00Z",
+      "updates": [
+        {
+          "date": "2024-05-13",
+          "title": "GPT-4o Released",
+          "description": "OpenAI released GPT-4o, a faster and more capable model with improved vision and audio capabilities. The new model offers better performance across text, vision, and audio tasks.",
+          "type": "MAJOR"
+        },
+        {
+          "date": "2024-04-30",
+          "title": "Canvas Released",
+          "description": "New Canvas feature allows users to create visual diagrams and flowcharts directly in ChatGPT, making it easier to visualize ideas and concepts.",
+          "type": "MAJOR"
+        },
+        {
+          "date": "2024-04-15",
+          "title": "Memory Feature Improvements",
+          "description": "Enhanced memory capabilities allow ChatGPT to remember more context across conversations, improving personalization and continuity.",
+          "type": "MINOR"
+        },
+        {
+          "date": "2024-03-20",
+          "title": "New Custom GPTs Available",
+          "description": "OpenAI announced new custom GPT templates for developers, designers, and content creators, expanding the GPT Store ecosystem.",
+          "type": "NEWS"
+        }
+      ],
       "score": {
         "popularityScore": 98,
         "trendScore": 80,
@@ -93,6 +119,26 @@
         "mobileApp": true
       },
       "lastVerifiedAt": "2026-01-05T00:00:00.000Z",
+      "updates": [
+        {
+          "date": "2025-11-20",
+          "title": "Claude 3.7 Sonnet Released",
+          "description": "Anthropic released Claude 3.7 Sonnet with improved reasoning capabilities, faster response times, and enhanced code generation. The new model shows significant improvements in mathematical problem-solving and long-form content creation.",
+          "type": "MAJOR"
+        },
+        {
+          "date": "2025-10-15",
+          "title": "Context Window Expanded to 1M Tokens",
+          "description": "Claude's context window has been expanded to 1 million tokens, allowing users to analyze entire codebases, research papers, and long documents in a single conversation.",
+          "type": "MAJOR"
+        },
+        {
+          "date": "2025-09-08",
+          "title": "New Artifacts Feature",
+          "description": "Introduced Artifacts feature that allows Claude to generate and display interactive code, documents, and visualizations in a dedicated panel alongside the conversation.",
+          "type": "MINOR"
+        }
+      ],
       "score": {
         "popularityScore": 85,
         "trendScore": 78,
@@ -131,6 +177,26 @@
         "mobileApp": true
       },
       "lastVerifiedAt": "2026-01-05T00:00:00.000Z",
+      "updates": [
+        {
+          "date": "2025-12-10",
+          "title": "Gemini 2.0 Ultra Released",
+          "description": "Google launched Gemini 2.0 Ultra with enhanced multimodal capabilities, improved video understanding, and better integration across Google Workspace. The model demonstrates superior performance in complex reasoning tasks.",
+          "type": "MAJOR"
+        },
+        {
+          "date": "2025-11-05",
+          "title": "Gemini Advanced Available in Gmail",
+          "description": "Gemini Advanced is now integrated directly into Gmail, allowing users to summarize emails, draft responses, and extract key information from long email threads.",
+          "type": "MINOR"
+        },
+        {
+          "date": "2025-10-22",
+          "title": "New Image Generation Capabilities",
+          "description": "Google expanded Gemini's image generation features with improved quality, faster generation times, and new style presets for creating professional visuals.",
+          "type": "NEWS"
+        }
+      ],
       "score": {
         "popularityScore": 80,
         "trendScore": 70,
@@ -169,6 +235,32 @@
         "mobileApp": false
       },
       "lastVerifiedAt": "2026-01-05T00:00:00.000Z",
+      "updates": [
+        {
+          "date": "2024-05-06",
+          "title": "Version 6.1 Released",
+          "description": "Midjourney released version 6.1 with improved prompt understanding, better coherence, and enhanced style consistency. The update includes significant improvements to text rendering and character consistency.",
+          "type": "MAJOR"
+        },
+        {
+          "date": "2024-04-22",
+          "title": "New Style Tuner Feature",
+          "description": "Introduced Style Tuner for Pro and Mega subscribers, allowing users to create and apply custom style presets to their generations.",
+          "type": "MINOR"
+        },
+        {
+          "date": "2024-04-10",
+          "title": "Website Launch",
+          "description": "Midjourney launched its official website interface, providing an alternative to the Discord-based experience for a more streamlined workflow.",
+          "type": "MAJOR"
+        },
+        {
+          "date": "2024-03-15",
+          "title": "Community Showcase Updates",
+          "description": "Enhanced community showcase features with better filtering, search, and discovery tools for exploring user-generated content.",
+          "type": "MINOR"
+        }
+      ],
       "score": {
         "popularityScore": 78,
         "trendScore": 60,
@@ -191,6 +283,26 @@
       "useCases": ["design"],
       "links": { "websiteUrl": "https://runwayml.com" },
       "lastVerifiedAt": "2026-01-05T00:00:00.000Z",
+      "updates": [
+        {
+          "date": "2025-12-18",
+          "title": "Gen-3 Alpha Video Model Released",
+          "description": "Runway launched Gen-3 Alpha, a breakthrough video generation model with improved temporal consistency, better motion understanding, and support for longer video sequences up to 10 seconds.",
+          "type": "MAJOR"
+        },
+        {
+          "date": "2025-11-12",
+          "title": "New Motion Brush Tool",
+          "description": "Introduced Motion Brush feature that allows users to selectively animate specific parts of generated videos, providing fine-grained control over movement and dynamics.",
+          "type": "MINOR"
+        },
+        {
+          "date": "2025-10-28",
+          "title": "Extended Video Length Support",
+          "description": "Runway now supports generating videos up to 10 seconds in length with improved quality and consistency across longer sequences.",
+          "type": "NEWS"
+        }
+      ],
       "score": {
         "popularityScore": 70,
         "trendScore": 72,
@@ -213,6 +325,26 @@
       "useCases": ["automation"],
       "links": { "websiteUrl": "https://elevenlabs.io" },
       "lastVerifiedAt": "2026-01-05T00:00:00.000Z",
+      "updates": [
+        {
+          "date": "2025-12-05",
+          "title": "Turbo v2.5 Voice Model Released",
+          "description": "ElevenLabs released Turbo v2.5, a faster and more natural-sounding voice model with reduced latency and improved emotional expressiveness. The model delivers near-instant voice synthesis for real-time applications.",
+          "type": "MAJOR"
+        },
+        {
+          "date": "2025-11-18",
+          "title": "Voice Library Marketplace Launched",
+          "description": "Introduced a marketplace where users can discover, share, and purchase high-quality voice clones created by the community, expanding the available voice options.",
+          "type": "MINOR"
+        },
+        {
+          "date": "2025-10-30",
+          "title": "Multi-Language Dubbing Feature",
+          "description": "Added automatic multi-language dubbing capabilities that can translate and voice content in over 29 languages while preserving the original speaker's voice characteristics.",
+          "type": "NEWS"
+        }
+      ],
       "score": {
         "popularityScore": 68,
         "trendScore": 66,
@@ -235,6 +367,26 @@
       "useCases": ["automation"],
       "links": { "websiteUrl": "https://n8n.io" },
       "lastVerifiedAt": "2026-01-05T00:00:00.000Z",
+      "updates": [
+        {
+          "date": "2025-12-14",
+          "title": "AI Workflow Assistant Released",
+          "description": "n8n introduced an AI-powered workflow assistant that can automatically generate workflows from natural language descriptions, making automation more accessible to non-technical users.",
+          "type": "MAJOR"
+        },
+        {
+          "date": "2025-11-20",
+          "title": "New 200+ Integrations Added",
+          "description": "Expanded integration library with 200+ new connectors including popular tools like Linear, Airtable, Slack, and Microsoft Teams, bringing the total to over 500 integrations.",
+          "type": "MINOR"
+        },
+        {
+          "date": "2025-10-15",
+          "title": "Workflow Templates Marketplace",
+          "description": "Launched a marketplace where users can share and discover pre-built workflow templates for common automation scenarios, accelerating workflow creation.",
+          "type": "NEWS"
+        }
+      ],
       "score": {
         "popularityScore": 60,
         "trendScore": 65,
@@ -257,6 +409,26 @@
       "useCases": ["coding"],
       "links": { "websiteUrl": "https://cursor.com" },
       "lastVerifiedAt": "2026-01-05T00:00:00.000Z",
+      "updates": [
+        {
+          "date": "2025-12-22",
+          "title": "Cursor Composer 2.0 Released",
+          "description": "Cursor launched Composer 2.0 with enhanced multi-file editing capabilities, improved code understanding across large codebases, and better context awareness for complex refactoring tasks.",
+          "type": "MAJOR"
+        },
+        {
+          "date": "2025-11-25",
+          "title": "New Codebase Indexing System",
+          "description": "Introduced a new indexing system that provides faster and more accurate codebase-wide search and context retrieval, significantly improving AI suggestions and code completion.",
+          "type": "MINOR"
+        },
+        {
+          "date": "2025-10-10",
+          "title": "Custom Model Fine-Tuning",
+          "description": "Added support for fine-tuning AI models on your codebase, allowing teams to create custom models that better understand their specific coding patterns and conventions.",
+          "type": "NEWS"
+        }
+      ],
       "score": {
         "popularityScore": 58,
         "trendScore": 75,
@@ -279,6 +451,26 @@
       "useCases": ["coding"],
       "links": { "websiteUrl": "https://github.com/features/copilot" },
       "lastVerifiedAt": "2026-01-05T00:00:00.000Z",
+      "updates": [
+        {
+          "date": "2025-12-08",
+          "title": "Copilot Workspace Released",
+          "description": "GitHub launched Copilot Workspace, a new AI-powered development environment that provides end-to-end assistance from planning to deployment, with full context awareness of your entire repository.",
+          "type": "MAJOR"
+        },
+        {
+          "date": "2025-11-15",
+          "title": "Enhanced Code Explanation Feature",
+          "description": "Improved code explanation capabilities that can now break down complex code blocks, explain architectural decisions, and provide context-aware documentation suggestions.",
+          "type": "MINOR"
+        },
+        {
+          "date": "2025-10-05",
+          "title": "Multi-Language Support Expansion",
+          "description": "Expanded support for additional programming languages including Rust, Go, and Kotlin, with improved code suggestions and error detection for these languages.",
+          "type": "NEWS"
+        }
+      ],
       "score": {
         "popularityScore": 75,
         "trendScore": 55,
@@ -301,6 +493,26 @@
       "useCases": ["writing"],
       "links": { "websiteUrl": "https://www.notion.so" },
       "lastVerifiedAt": "2026-01-05T00:00:00.000Z",
+      "updates": [
+        {
+          "date": "2025-12-12",
+          "title": "Notion AI Q&A Feature",
+          "description": "Introduced Q&A feature that allows users to ask questions about their entire Notion workspace and get instant answers by searching across all pages, databases, and content.",
+          "type": "MAJOR"
+        },
+        {
+          "date": "2025-11-28",
+          "title": "Enhanced Auto-Complete Suggestions",
+          "description": "Improved AI auto-complete now provides more contextually relevant suggestions for writing, with better understanding of document structure and formatting preferences.",
+          "type": "MINOR"
+        },
+        {
+          "date": "2025-10-18",
+          "title": "AI-Powered Database Insights",
+          "description": "Added AI-powered insights for databases that can automatically generate summaries, identify trends, and suggest improvements to data organization and structure.",
+          "type": "NEWS"
+        }
+      ],
       "score": {
         "popularityScore": 62,
         "trendScore": 50,
@@ -323,6 +535,26 @@
       "useCases": ["design", "social-media"],
       "links": { "websiteUrl": "https://www.canva.com" },
       "lastVerifiedAt": "2026-01-05T00:00:00.000Z",
+      "updates": [
+        {
+          "date": "2025-12-20",
+          "title": "Magic Design 2.0 Released",
+          "description": "Canva launched Magic Design 2.0 with improved AI-generated design suggestions, better brand consistency, and enhanced understanding of design intent for more professional results.",
+          "type": "MAJOR"
+        },
+        {
+          "date": "2025-11-10",
+          "title": "AI Background Remover Enhanced",
+          "description": "Upgraded background removal tool with improved edge detection, better handling of complex images, and support for batch processing multiple images simultaneously.",
+          "type": "MINOR"
+        },
+        {
+          "date": "2025-10-25",
+          "title": "New AI Video Generator",
+          "description": "Introduced AI-powered video generation that can create short-form videos from text prompts, complete with animations, transitions, and music suggestions.",
+          "type": "NEWS"
+        }
+      ],
       "score": {
         "popularityScore": 72,
         "trendScore": 52,
@@ -345,6 +577,26 @@
       "useCases": ["design"],
       "links": { "websiteUrl": "https://www.descript.com" },
       "lastVerifiedAt": "2026-01-05T00:00:00.000Z",
+      "updates": [
+        {
+          "date": "2025-12-16",
+          "title": "Overdub 2.0 Voice Cloning Released",
+          "description": "Descript launched Overdub 2.0 with significantly improved voice cloning quality, faster processing times, and support for multiple voice profiles per project. The new model produces more natural-sounding speech with better emotional range.",
+          "type": "MAJOR"
+        },
+        {
+          "date": "2025-11-22",
+          "title": "AI-Powered Filler Word Removal",
+          "description": "Introduced automatic detection and removal of filler words (um, uh, like) with a single click, making post-production editing faster and more efficient.",
+          "type": "MINOR"
+        },
+        {
+          "date": "2025-10-12",
+          "title": "Multi-Track Video Editing Improvements",
+          "description": "Enhanced multi-track video editing capabilities with improved timeline performance, better synchronization tools, and new AI-powered scene detection for automatic chapter creation.",
+          "type": "NEWS"
+        }
+      ],
       "score": {
         "popularityScore": 55,
         "trendScore": 48,

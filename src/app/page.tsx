@@ -19,7 +19,7 @@ export default async function Home() {
       {/* HERO TITLE (Static) */}
       <div className="mb-8 text-center relative">
         <h1 className="text-5xl font-extrabold tracking-tight text-white sm:text-7xl mb-8">
-          The Market Cap of{" "}
+          The Market Index of{" "}
           <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-violet-400">
             AI
           </span>

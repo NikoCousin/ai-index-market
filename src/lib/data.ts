@@ -7,6 +7,14 @@ export type PricingModel = "FREE" | "FREEMIUM" | "PAID";
 export type ToolStatus = "ACTIVE" | "ACQUIRED" | "DISCONTINUED";
 export type SkillLevel = "BEGINNER" | "INTERMEDIATE" | "ADVANCED";
 export type PlatformType = "WEB" | "IOS" | "ANDROID" | "DESKTOP" | "API";
+export type UpdateType = "MAJOR" | "MINOR" | "NEWS";
+
+export type ToolUpdate = {
+  date: string;
+  title: string;
+  description: string;
+  type: UpdateType;
+};
 
 export type Tool = {
   name: string;
@@ -39,6 +47,7 @@ export type Tool = {
     mobileApp: boolean;
   };
   lastVerifiedAt?: string;
+  updates?: ToolUpdate[];
   // Kept as 'score' (singular) to match your existing pages
   score?: {
     popularityScore?: number;
