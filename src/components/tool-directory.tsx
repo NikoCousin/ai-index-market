@@ -1,13 +1,19 @@
 "use client";
 
-import { useState } from "react";
+import { useState, ReactNode } from "react";
 import Link from "next/link";
 import { Tool } from "@/lib/data";
 
-export default function ToolDirectory({ tools }: { tools: Tool[] }) {
+// ✅ Added 'children' prop here to accept the Stats
+export default function ToolDirectory({
+  tools,
+  children,
+}: {
+  tools: Tool[];
+  children?: ReactNode;
+}) {
   const [query, setQuery] = useState("");
 
-  // 🔎 THE FILTER LOGIC
   const filteredTools = tools.filter((tool) => {
     const searchContent = (
       tool.name +
@@ -17,16 +23,10 @@ export default function ToolDirectory({ tools }: { tools: Tool[] }) {
     return searchContent.includes(query.toLowerCase());
   });
 
-  // Get top trending tool for the badge
-  const topTrend = tools[0]?.name || "ChatGPT";
-
   return (
     <div className="w-full">
-      {/* 1. HERO SEARCH SECTION (The dark area) */}
-      <div className="mb-12 text-center relative max-w-xl mx-auto">
-        {" "}
-        {/* Changed max-w-2xl to max-w-xl for narrower look */}
-        {/* The Search Bar - Floating in the Hero */}
+      {/* 1. HERO SEARCH SECTION */}
+      <div className="mb-8 text-center relative max-w-xl mx-auto">
         <div className="relative group">
           <div className="absolute -inset-1 bg-gradient-to-r from-blue-600 to-violet-600 rounded-full blur opacity-25 group-hover:opacity-50 transition duration-1000 group-hover:duration-200"></div>
           <div className="relative">
@@ -48,32 +48,18 @@ export default function ToolDirectory({ tools }: { tools: Tool[] }) {
             <input
               type="text"
               className="block w-full p-4 pl-12 text-sm text-slate-900 border border-slate-200 rounded-full bg-white shadow-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none"
-              placeholder="Search AI tools (e.g. 'video', 'free')..."
+              placeholder="Search in this category..."
               value={query}
               onChange={(e) => setQuery(e.target.value)}
             />
           </div>
         </div>
-        {/* 🔥 STATS BADGES (Restored!) */}
-        <div className="mt-8 flex flex-wrap justify-center gap-4">
-          {/* Badge 1: Tools Count */}
-          <div className="inline-flex items-center gap-2 rounded-full border border-slate-700 bg-slate-800/50 backdrop-blur-sm px-4 py-2 text-sm font-medium text-slate-300 shadow-sm">
-            <span className="relative flex h-2 w-2">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
-              <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
-            </span>
-            {tools.length} Tools Tracked
-          </div>
-
-          {/* Badge 2: Trending Tool */}
-          <div className="inline-flex items-center gap-2 rounded-full border border-slate-700 bg-slate-800/50 backdrop-blur-sm px-4 py-2 text-sm font-medium text-slate-300 shadow-sm">
-            <span>🔥</span>
-            Top Trend: <span className="text-white font-bold">{topTrend}</span>
-          </div>
-        </div>
       </div>
 
-      {/* 2. THE TABLE SECTION (Separate White Box) */}
+      {/* 🟢 2. INJECTED STATS (This renders whatever you pass inside the component) */}
+      {children && <div className="mb-10 max-w-5xl mx-auto">{children}</div>}
+
+      {/* 3. THE TABLE SECTION */}
       <div className="bg-white rounded-xl border border-slate-200 shadow-xl overflow-hidden">
         <div className="overflow-x-auto">
           <table className="w-full text-sm text-left">
@@ -103,17 +89,7 @@ export default function ToolDirectory({ tools }: { tools: Tool[] }) {
               ) : (
                 <tr>
                   <td colSpan={6} className="text-center py-12 text-slate-500">
-                    <div className="flex flex-col items-center justify-center">
-                      <p className="text-lg font-medium text-slate-600">
-                        No tools found for "{query}"
-                      </p>
-                      <button
-                        onClick={() => setQuery("")}
-                        className="mt-2 text-blue-500 hover:text-blue-700 font-medium"
-                      >
-                        Clear Search
-                      </button>
-                    </div>
+                    No tools found for "{query}"
                   </td>
                 </tr>
               )}
@@ -125,7 +101,7 @@ export default function ToolDirectory({ tools }: { tools: Tool[] }) {
   );
 }
 
-// ⬇️ LOGO COMPONENT (Manual Fallback)
+// ⬇️ LOGO COMPONENT
 function ToolRow({ tool, index }: { tool: Tool; index: number }) {
   const [imageError, setImageError] = useState(false);
 
