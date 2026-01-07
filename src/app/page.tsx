@@ -1,6 +1,7 @@
 import { loadSeed } from "@/lib/data";
 import SearchBar from "@/components/search-bar";
 import ToolsTable from "@/components/tools-table";
+import NewsSection from "@/components/news-section";
 
 // Revalidate data every hour
 export const revalidate = 3600;
@@ -83,6 +84,9 @@ export default async function Home({
           </button>
         </div>
       )}
+
+      {/* NEWS SECTION */}
+      <NewsSection />
     </main>
   );
 }
