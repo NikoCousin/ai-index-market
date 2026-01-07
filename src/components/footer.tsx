@@ -27,7 +27,7 @@ export default function Footer() {
             <ul className="space-y-3 text-sm text-slate-400">
               <li>
                 <Link
-                  href="/tools"
+                  href="/"
                   className="hover:text-blue-400 transition-colors"
                 >
                   All Tools

@@ -7,7 +7,7 @@ export default function Navbar() {
       <div className="container mx-auto flex h-16 items-center justify-between px-4">
         {/* Logo */}
         <Link
-          href="/tools"
+          href="/"
           className="flex items-center gap-2 group cursor-pointer"
         >
           <div className="h-8 w-8 rounded-lg bg-blue-600 flex items-center justify-center text-white font-bold shadow-lg shadow-blue-900/20 group-hover:bg-blue-500 transition-colors">
@@ -21,7 +21,7 @@ export default function Navbar() {
         {/* Navigation Links */}
         <nav className="hidden md:flex items-center gap-8 text-sm font-medium text-slate-400">
           <Link
-            href="/tools"
+            href="/"
             className="hover:text-white transition-colors cursor-pointer"
           >
             All Tools
