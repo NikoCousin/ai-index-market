@@ -3,6 +3,7 @@
 import { useState, ReactNode } from "react";
 import Link from "next/link";
 import { Tool } from "@/lib/data";
+import ToolLogo from "@/components/tool-logo";
 
 // ✅ Added 'children' prop here to accept the Stats
 export default function ToolDirectory({
@@ -141,26 +142,15 @@ export default function ToolDirectory({
 
 // ⬇️ LOGO COMPONENT
 function ToolRow({ tool, index }: { tool: Tool; index: number }) {
-  const [imageError, setImageError] = useState(false);
-
   return (
     <tr className="hover:bg-slate-50/80 transition-colors">
       <td className="pl-6 pr-2 py-4 text-slate-500">#{index + 1}</td>
       <td className="px-4 py-4">
-        <div className="h-10 w-10 overflow-hidden rounded-xl border border-slate-100 shadow-sm bg-slate-50">
-          {!imageError ? (
-            <img
-              src={`/logos/${tool.slug}.png`}
-              alt={tool.name}
-              className="h-full w-full object-cover"
-              onError={() => setImageError(true)}
-            />
-          ) : (
-            <div className="h-full w-full flex items-center justify-center bg-slate-800 text-white font-bold text-xs">
-              {tool.name.substring(0, 2).toUpperCase()}
-            </div>
-          )}
-        </div>
+        <ToolLogo
+          name={tool.name}
+          websiteUrl={tool.links?.website_url || tool.links?.websiteUrl}
+          className="h-10 w-10 flex-shrink-0 rounded-lg"
+        />
       </td>
       <td className="px-4 py-4">
         <div className="font-semibold text-slate-900">
@@ -221,8 +211,6 @@ function ToolRow({ tool, index }: { tool: Tool; index: number }) {
 
 // ⬇️ MOBILE CARD COMPONENT
 function MobileToolCard({ tool, index }: { tool: Tool; index: number }) {
-  const [imageError, setImageError] = useState(false);
-
   return (
     <Link
       href={`/tools/${tool.slug}`}
@@ -230,20 +218,11 @@ function MobileToolCard({ tool, index }: { tool: Tool; index: number }) {
     >
       <div className="flex items-start gap-4">
         {/* Logo */}
-        <div className="h-16 w-16 flex-shrink-0 overflow-hidden rounded-xl border border-slate-100 shadow-sm bg-slate-50">
-          {!imageError ? (
-            <img
-              src={`/logos/${tool.slug}.png`}
-              alt={tool.name}
-              className="h-full w-full object-cover"
-              onError={() => setImageError(true)}
-            />
-          ) : (
-            <div className="h-full w-full flex items-center justify-center bg-slate-800 text-white font-bold text-sm">
-              {tool.name.substring(0, 2).toUpperCase()}
-            </div>
-          )}
-        </div>
+        <ToolLogo
+          name={tool.name}
+          websiteUrl={tool.links?.website_url || tool.links?.websiteUrl}
+          className="h-16 w-16 flex-shrink-0 rounded-lg"
+        />
 
         {/* Content */}
         <div className="flex-1 min-w-0">

@@ -3,70 +3,84 @@
 import Image from "next/image";
 import { useState } from "react";
 
+interface ToolLogoProps {
+  name: string;
+  websiteUrl?: string;
+  className?: string;
+}
+
+/**
+ * Extracts the hostname from a URL, removing protocol, www, and trailing slashes
+ */
+function extractHostname(url: string): string | null {
+  if (!url) return null;
+
+  try {
+    // Add protocol if missing
+    let urlToParse = url;
+    if (!url.startsWith("http://") && !url.startsWith("https://")) {
+      urlToParse = `https://${url}`;
+    }
+
+    const urlObj = new URL(urlToParse);
+    let hostname = urlObj.hostname;
+
+    // Remove 'www.' prefix if present
+    if (hostname.startsWith("www.")) {
+      hostname = hostname.substring(4);
+    }
+
+    return hostname;
+  } catch (error) {
+    // Invalid URL, return null
+    return null;
+  }
+}
+
 export default function ToolLogo({
   name,
   websiteUrl,
   className = "h-10 w-10",
-}: {
-  name: string;
-  websiteUrl?: string;
-  className?: string;
-}) {
-  const [error, setError] = useState(false);
+}: ToolLogoProps) {
+  const [imageError, setImageError] = useState(false);
+  const [imageLoaded, setImageLoaded] = useState(false);
 
-  // 1. SAFETY: If no URL, show Initials immediately
-  if (!websiteUrl) {
-    return <InitialsFallback name={name} className={className} />;
+  // Extract hostname from websiteUrl
+  const hostname = websiteUrl ? extractHostname(websiteUrl) : null;
+
+  // If no valid hostname, show initials fallback
+  if (!hostname || imageError) {
+    const initials = name.substring(0, 1).toUpperCase();
+    return (
+      <div
+        className={`${className} rounded-xl border border-slate-700 shadow-sm bg-slate-800 flex items-center justify-center text-white font-bold text-xs flex-shrink-0`}
+      >
+        {initials}
+      </div>
+    );
   }
 
-  // 2. CLEANER: Fix "midjourney.com" -> "https://midjourney.com" to prevent crashes
-  const getDomain = (url: string) => {
-    try {
-      const safeUrl = url.startsWith("http") ? url : `https://${url}`;
-      return new URL(safeUrl).hostname;
-    } catch (e) {
-      return ""; // If URL is total garbage, return empty
-    }
-  };
+  // Build unavatar.io URL with fallback
+  const unavatarUrl = `https://unavatar.io/${hostname}?fallback=https://avatar.vercel.sh/${hostname}`;
 
-  const domain = getDomain(websiteUrl);
-
-  // 3. GOOGLE MAGIC: Get the icon
-  const logoUrl = `https://www.google.com/s2/favicons?domain=${domain}&sz=128`;
-
-  if (error || !domain) {
-    return <InitialsFallback name={name} className={className} />;
-  }
-
-  // 4. DISPLAY
   return (
-    <div
-      className={`${className} relative flex-shrink-0 overflow-hidden rounded-xl bg-white/5`}
-    >
-      {/* We use a standard img tag here for simplicity and speed with external URLs */}
-      <img
-        src={logoUrl}
+    <div className={`${className} relative rounded-xl border border-slate-700 shadow-sm bg-slate-800 overflow-hidden flex-shrink-0`}>
+      <Image
+        src={unavatarUrl}
         alt={`${name} logo`}
-        className="h-full w-full object-cover"
-        onError={() => setError(true)}
+        fill
+        className="object-cover"
+        onError={() => setImageError(true)}
+        onLoad={() => setImageLoaded(true)}
+        unoptimized // unavatar.io handles optimization
       />
-    </div>
-  );
-}
-
-// The "Plan B" Component (Your nice colored letters)
-function InitialsFallback({
-  name,
-  className,
-}: {
-  name: string;
-  className: string;
-}) {
-  return (
-    <div
-      className={`${className} flex flex-shrink-0 items-center justify-center rounded-xl bg-blue-600/20 text-blue-100 font-bold border border-blue-500/30`}
-    >
-      {name.substring(0, 2).toUpperCase()}
+      {!imageLoaded && (
+        <div className="absolute inset-0 flex items-center justify-center bg-slate-800">
+          <span className="text-white font-bold text-xs">
+            {name.substring(0, 1).toUpperCase()}
+          </span>
+        </div>
+      )}
     </div>
   );
 }

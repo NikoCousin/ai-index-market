@@ -2,6 +2,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { loadSeed, getRelatedTools } from "@/lib/data";
 import VoteButton from "@/components/vote-button";
+import ToolLogo from "@/components/tool-logo";
 
 interface Props {
   params: Promise<{ slug: string }>;
@@ -55,17 +56,11 @@ export default async function ToolPage({ params }: Props) {
           <div className="flex items-start gap-6">
             {/* === CHANGED: LEFT COLUMN (Logo + Vote Button) === */}
             <div className="flex flex-col items-center gap-3">
-              {/* Existing Logo Code */}
-              <div
-                className="h-24 w-24 flex-shrink-0 overflow-hidden rounded-2xl border border-slate-700 shadow-sm bg-slate-800"
-                style={{ backgroundColor: "white" }}
-              >
-                <img
-                  src={`/logos/${tool.slug}.png`}
-                  alt={`${tool.name} logo`}
-                  className="h-full w-full object-cover"
-                />
-              </div>
+              <ToolLogo
+                name={tool.name}
+                websiteUrl={tool.links?.website_url || tool.links?.websiteUrl}
+                className="h-24 w-24 flex-shrink-0 rounded-2xl"
+              />
             </div>
             {/* ============================================== */}
 
