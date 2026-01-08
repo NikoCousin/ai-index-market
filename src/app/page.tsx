@@ -1,5 +1,5 @@
 import { getRankedTools } from "@/lib/ranking";
-import ToolDirectory from "@/components/tool-directory"; // <--- Import the new file
+import ToolDirectoryPaginated from "@/components/tool-directory-paginated";
 import NewsSection from "@/components/news-section";
 
 // Revalidate data every hour
@@ -29,7 +29,7 @@ export default async function Home() {
 
       {/* DIRECTORY SECTION (Contains Search Bar + Table) */}
       {/* This renders the Search Bar in the visual "Hero" spot, and the table below */}
-      <ToolDirectory tools={tools} />
+      <ToolDirectoryPaginated tools={tools} />
 
       {/* NEWS SECTION */}
       <NewsSection />

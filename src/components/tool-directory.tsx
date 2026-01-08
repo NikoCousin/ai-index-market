@@ -9,9 +9,11 @@ import ToolLogo from "@/components/tool-logo";
 export default function ToolDirectory({
   tools,
   children,
+  startIndex = 0,
 }: {
   tools: Tool[];
   children?: ReactNode;
+  startIndex?: number;
 }) {
   const [query, setQuery] = useState("");
 
@@ -110,7 +112,7 @@ export default function ToolDirectory({
             <tbody className="divide-y divide-slate-100">
               {filteredTools.length > 0 ? (
                 filteredTools.map((tool, index) => (
-                  <ToolRow key={tool.slug} tool={tool} index={index} />
+                  <ToolRow key={tool.slug} tool={tool} index={startIndex + index} />
                 ))
               ) : (
                 <tr>
@@ -128,7 +130,7 @@ export default function ToolDirectory({
       <div className="md:hidden space-y-4">
         {filteredTools.length > 0 ? (
           filteredTools.map((tool, index) => (
-            <MobileToolCard key={tool.slug} tool={tool} index={index} />
+            <MobileToolCard key={tool.slug} tool={tool} index={startIndex + index} />
           ))
         ) : (
           <div className="text-center py-12 text-slate-500 bg-white rounded-xl border border-slate-200 p-8">
