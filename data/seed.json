@@ -907,6 +907,54 @@
       ],
       "pricing_model": "Freemium / paid plans (starting around $16/mo; creator and business tiers) / Enterprise",
       "platforms_string": "macOS, Windows, Web"
+    },
+    {
+      "name": "Grok",
+      "slug": "grok",
+      "tagline": "xAI's real-time, X-native assistant",
+      "descriptionShort": "xAI's real-time, X-native assistant that competes on immediacy and personality as much as on reasoning performance.",
+      "descriptionLong": "Grok is an AI assistant developed by xAI, designed to answer questions with access to real-time data from X (formerly Twitter). It focuses on current events, reasoning, and conversational assistance with a distinct personality.",
+      "status": "ACTIVE",
+      "skillLevel": "BEGINNER",
+      "pricingModel": "PAID",
+      "platforms": [
+        "WEB",
+        "IOS",
+        "ANDROID"
+      ],
+      "categories": [
+        "llms"
+      ],
+      "useCases": [
+        "writing",
+        "analysis",
+        "research"
+      ],
+      "tier": 2,
+      "links": {
+        "websiteUrl": "https://x.ai",
+        "website_url": "https://x.ai"
+      },
+      "pros": [
+        "Native real-time access to X (Twitter) data improves performance on fast-moving topics, trends, and public sentiment",
+        "Distinct \"fun/roast\" mode creates strong consumer engagement and differentiated brand voice versus more formal assistants",
+        "Grok 2-era reasoning improvements make it increasingly competitive on multi-step analysis and problem-solving tasks"
+      ],
+      "cons": [
+        "Access and higher limits are gated behind X Premium tiers, limiting top-of-funnel adoption versus freemium-first competitors",
+        "Smaller developer ecosystem and fewer third-party integrations than OpenAI, Anthropic, and major cloud platforms",
+        "Less restrictive safety posture can increase enterprise risk (brand safety, compliance, moderation, and reputational exposure)"
+      ],
+      "specs": {
+        "developer": "xAI",
+        "launchYear": "2023",
+        "hasApi": false,
+        "mobileApp": true
+      },
+      "lastVerifiedAt": "2026-01-08T00:00:00.000Z",
+      "analyst_brief": "Grok differentiates through privileged access to real-time signals from X (Twitter), making it structurally strong for breaking news, sentiment tracking, and trend-aware Q&A where static-knowledge chatbots lag. With Grok 2's reasoning push (and subsequent iterations), it aims to close the gap with Tier-1 generalists on multi-step problem solving while maintaining a distinct \"fun/roast\" personality layer that increases consumer engagement. Its competitive edge is distribution inside X plus live data, but this same positioning introduces governance and brand-safety complexity. Relative to OpenAI and Anthropic, Grok is less constrained by safety filters, which can be an advantage for certain users but also elevates policy, regulatory, and reputational risk for organizations.",
+      "pricing_model": "Included in X Premium ($8-16/mo)",
+      "platforms_string": "Web, iOS, Android (via X app)"
     }
   ]
 }
