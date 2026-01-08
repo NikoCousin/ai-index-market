@@ -41,14 +41,14 @@ export default function Footer() {
                   Categories
                 </Link>
               </li>
-              <li>
+              {/* <li>
                 <Link
                   href="/use-cases"
                   className="hover:text-blue-400 transition-colors"
                 >
                   Use Cases
                 </Link>
-              </li>
+              </li> */}
               <li>
                 <Link
                   href="#"

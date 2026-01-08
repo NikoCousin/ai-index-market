@@ -65,7 +65,7 @@
       "name": "ChatGPT",
       "slug": "chatgpt",
       "tagline": "General-purpose AI assistant for writing, coding, and analysis.",
-      "descriptionShort": "The industry-leading AI chatbot by OpenAI.",
+      "descriptionShort": "The de facto consumer and SMB default for general-purpose LLM chat, multimodal assistance, and broad productivity use cases.",
       "descriptionLong": "ChatGPT is a conversational AI model developed by OpenAI. It interacts in a conversational way, enabling it to answer follow-up questions, admit its mistakes, challenge incorrect premises, and reject inappropriate requests.",
       "status": "ACTIVE",
       "skillLevel": "BEGINNER",
@@ -87,17 +87,18 @@
       "tier": 1,
       "links": {
         "websiteUrl": "https://chat.openai.com",
-        "twitter": "https://twitter.com/openai"
+        "twitter": "https://twitter.com/openai",
+        "website_url": "https://chat.openai.com"
       },
       "pros": [
-        "Extremely versatile across writing and coding tasks",
-        "Massive plugin ecosystem and custom GPTs",
-        "Best-in-class reasoning capabilities (GPT-4)"
+        "Broadest general-purpose capability mix (text, vision, file workflows) in a single consumer-grade product surface",
+        "Strong ecosystem leverage via APIs, integrations, and widespread third-party tooling support",
+        "Fast iteration cadence with frequent feature additions that expand use cases beyond chat"
       ],
       "cons": [
-        "Knowledge cutoff can be outdated without browsing",
-        "Free version (GPT-3.5) is significantly weaker",
-        "Can be verbose or hallucinate facts"
+        "Output variability across tasks can require guardrails, especially for high-stakes factual work",
+        "Costs and governance can rise quickly for teams at scale (seat + usage + policy controls)",
+        "Model and feature availability can differ by plan/region, complicating standardization for organizations"
       ],
       "specs": {
         "developer": "OpenAI",
@@ -138,13 +139,16 @@
         "freshnessScore": 95,
         "communityScore": 90,
         "rankScore": 92
-      }
+      },
+      "analyst_brief": "ChatGPT's primary strength is breadth: strong general reasoning, multimodal inputs/outputs, and an increasingly integrated workspace (projects, tools, and connectors) that keeps users inside one surface. Its moat is distribution (mass consumer mindshare), rapid feature shipping, and a large developer ecosystem around the API and integrations. Versus Claude it typically competes on product surface area and ecosystem; versus Gemini it competes on neutrality across platforms and cross-vendor workflows. Best for individuals and teams that want one general AI hub spanning writing, analysis, ideation, and lightweight automation.",
+      "pricing_model": "Freemium / Plus ($20/mo) / Pro (~$200/mo) / Business & Enterprise (per-seat; custom) / API (usage-based)",
+      "platforms_string": "Web, iOS, Android, Desktop apps, API"
     },
     {
       "name": "Claude",
       "slug": "claude",
       "tagline": "Strong reasoning and long-form writing assistant",
-      "descriptionShort": "Writing, analysis, and coding help.",
+      "descriptionShort": "A leading LLM positioned around high-quality writing, strong long-context comprehension, and enterprise-friendly safety posture.",
       "descriptionLong": "Claude is a next-generation AI assistant built for work and trained to be safe, accurate, and secure. It excels at reading long documents and providing nuanced, human-like answers.",
       "status": "ACTIVE",
       "skillLevel": "BEGINNER",
@@ -165,17 +169,18 @@
       ],
       "tier": 1,
       "links": {
-        "websiteUrl": "https://claude.ai"
+        "websiteUrl": "https://claude.ai",
+        "website_url": "https://claude.ai"
       },
       "pros": [
-        "Massive context window (200k+ tokens) for analyzing books/codebases",
-        "More natural, less robotic writing style than GPT",
-        "Strong focus on safety and reduced toxicity"
+        "Strong performance on long-document synthesis and structured writing tasks",
+        "Enterprise-leaning positioning with safer defaults and admin-oriented controls (plan-dependent)",
+        "High user preference in editorial, policy, and internal-knowledge workflows"
       ],
       "cons": [
-        "Fewer third-party plugins than ChatGPT",
-        "Rate limits on the free tier can be strict",
-        "No image generation capabilities (text only)"
+        "Product surface is narrower than all-in-one assistants that bundle more tools and \"apps\"",
+        "Capability and limits vary materially by plan; heavy users may need higher tiers quickly",
+        "Ecosystem and third-party integration footprint is smaller than the largest generalist platforms"
       ],
       "specs": {
         "developer": "Anthropic",
@@ -210,13 +215,16 @@
         "freshnessScore": 80,
         "communityScore": 60,
         "rankScore": 84
-      }
+      },
+      "analyst_brief": "Claude is differentiated by consistently strong writing quality, summarization, and document-centric reasoning, making it a common pick for knowledge work and editorial workflows. Its moat is trust and preference among teams that value safer defaults and strong long-context performance, plus a growing enterprise offering. Compared to ChatGPT, Claude often wins on tone control and document handling; compared to Gemini, it is less tied to a broader platform ecosystem. Best for researchers, operators, and teams doing heavy reading/writing across long documents with a premium on clarity and reduced hallucination risk.",
+      "pricing_model": "Freemium / Pro (paid) / Team & Enterprise / API (usage-based)",
+      "platforms_string": "Web, iOS, Android, API"
     },
     {
       "name": "Gemini",
       "slug": "gemini",
       "tagline": "Google AI assistant integrated with Google ecosystem",
-      "descriptionShort": "Chat, search-assisted reasoning, and multimodal.",
+      "descriptionShort": "Google's flagship AI assistant and model family, strategically advantaged by deep integration into the Google product ecosystem.",
       "descriptionLong": "Gemini is Google's most capable AI model, built from the ground up to be multimodal. It can generalize and seamlessly understand, operate across, and combine different types of information including text, code, audio, image, and video.",
       "status": "ACTIVE",
       "skillLevel": "BEGINNER",
@@ -237,17 +245,18 @@
       ],
       "tier": 1,
       "links": {
-        "websiteUrl": "https://gemini.google.com"
+        "websiteUrl": "https://gemini.google.com",
+        "website_url": "https://gemini.google.com"
       },
       "pros": [
-        "Native integration with Google Docs, Drive, and Gmail",
-        "True multimodal capabilities (understands video and audio)",
-        "Fast response times with Flash models"
+        "Native integration advantages across Google products (particularly for Workspace and Android users)",
+        "Strong multimodal roadmap tied to Google's model releases and infrastructure",
+        "Enterprise procurement path via Google's broader cloud and productivity stack"
       ],
       "cons": [
-        "Image generation can be restricted by region or safety filters",
-        "Can be overly sensitive with refusals on controversial topics",
-        "UI can feel cluttered with ecosystem suggestions"
+        "User experience and feature consistency can vary across regions and Google surfaces",
+        "Ecosystem lock-in risk for organizations trying to remain cloud-vendor neutral",
+        "Rapid model/version transitions can complicate evaluation and standardized rollout"
       ],
       "specs": {
         "developer": "Google",
@@ -282,13 +291,16 @@
         "freshnessScore": 78,
         "communityScore": 55,
         "rankScore": 79
-      }
+      },
+      "analyst_brief": "Gemini's core strength is platform leverage: integration across Google surfaces (Search-adjacent experiences, Workspace, Android) and developer distribution via Google's cloud tooling. Its moat is default placement and native data access within Google's ecosystem, which can reduce workflow friction for users already standardized on Google. Versus ChatGPT and Claude, Gemini often competes on integration and multimodality at scale rather than a single best-in-class chat UX. Best for users and organizations heavily invested in Google Workspace/Android who want AI embedded directly in daily tools.",
+      "pricing_model": "Freemium / Google AI subscription tiers (e.g., ~ $20/mo class) / Workspace & Enterprise tiers / API (usage-based)",
+      "platforms_string": "Web, Android, iOS, API"
     },
     {
       "name": "Midjourney",
       "slug": "midjourney",
       "tagline": "High-quality image generation",
-      "descriptionShort": "Text-to-image creative tool.",
+      "descriptionShort": "A top-tier text-to-image platform optimized for high-aesthetic outputs and creator-centric iteration loops.",
       "descriptionLong": "Midjourney is an independent research lab exploring new mediums of thought and expanding the imaginative powers of the human species. It is widely considered the gold standard for AI artistic generation.",
       "status": "ACTIVE",
       "skillLevel": "INTERMEDIATE",
@@ -305,17 +317,18 @@
       ],
       "tier": 2,
       "links": {
-        "websiteUrl": "https://www.midjourney.com"
+        "websiteUrl": "https://www.midjourney.com",
+        "website_url": "https://www.midjourney.com"
       },
       "pros": [
-        "Industry-leading artistic quality and photorealism",
-        "Deep control over style, aspect ratio, and variation",
-        "Active community for prompt inspiration"
+        "Consistently strong aesthetic quality and stylization that many creators prefer",
+        "High iteration velocity for concept exploration and moodboarding",
+        "Community-driven discovery and prompt culture that accelerates learning curves"
       ],
       "cons": [
-        "Primary interface is via Discord (can be confusing)",
-        "No free tier available currently",
-        "Prompting requires a learning curve (parameters)"
+        "Precision and controllability can be weaker than pro-oriented workflows for production constraints",
+        "Repeatability and brand-safe consistency can be challenging without careful prompting",
+        "Primarily subscription-based with no durable \"free\" tier for sustained evaluation"
       ],
       "specs": {
         "developer": "Midjourney Inc.",
@@ -356,13 +369,16 @@
         "freshnessScore": 70,
         "communityScore": 65,
         "rankScore": 76
-      }
+      },
+      "analyst_brief": "Midjourney remains a benchmark for style, aesthetics, and \"prompt-to-visual\" speed for creators who prioritize artistic quality over controllability. Its moat is brand reputation, a large creator community, and a distinctive model style that many users view as best-in-class for concept art and stylized imagery. Compared with generalist image generators, it often wins on perceived beauty; compared with node-based or pro pipelines, it can lag on precision controls and repeatability. Best for designers, marketers, and creators who need rapid, high-quality image ideation and production.",
+      "pricing_model": "Paid subscriptions (Basic/Standard/Pro/Mega; typically starting around $10/mo)",
+      "platforms_string": "Discord, Web"
     },
     {
       "name": "Runway",
       "slug": "runway",
       "tagline": "Video creation and editing with AI",
-      "descriptionShort": "Text-to-video and video editing.",
+      "descriptionShort": "A leading creator-focused generative video platform optimized for rapid iteration, effects, and AI-assisted post-production.",
       "descriptionLong": "A platform for AI video generation and editing workflows.",
       "status": "ACTIVE",
       "skillLevel": "INTERMEDIATE",
@@ -378,7 +394,8 @@
       ],
       "tier": 3,
       "links": {
-        "websiteUrl": "https://runwayml.com"
+        "websiteUrl": "https://runwayml.com",
+        "website_url": "https://runwayml.com"
       },
       "lastVerifiedAt": "2026-01-05T00:00:00.000Z",
       "updates": [
@@ -407,13 +424,26 @@
         "freshnessScore": 75,
         "communityScore": 50,
         "rankScore": 71
-      }
+      },
+      "analyst_brief": "Runway's strength is productizing cutting-edge generative video into a creator workflow: prompt-based generation plus editing tools that make iteration fast. Its moat is execution at the intersection of model capability and a usable editor experience, creating stickiness for creators who need both generation and post. Compared to one-off video generators, Runway is closer to a creative suite; compared to traditional NLEs, it offers AI-native primitives. Best for content teams, agencies, and creators who need short-form video assets and fast experimentation cycles.",
+      "pros": [
+        "Integrated generation + editing workflow reduces toolchain fragmentation for creators",
+        "Strong iteration loop for short-form creative production and experimentation",
+        "Team plans enable shared projects and repeatable production processes (plan-dependent)"
+      ],
+      "cons": [
+        "Credit-based economics can be unpredictable for heavy users and iterative workflows",
+        "Quality and control can vary by model/version, especially for precise brand requirements",
+        "Commercial and compliance requirements may necessitate higher tiers for some organizations"
+      ],
+      "pricing_model": "Freemium / Standard-Pro-Unlimited tiers (typically starting around $12/mo per user, billed annually) / Enterprise",
+      "platforms_string": "Web"
     },
     {
       "name": "ElevenLabs",
       "slug": "elevenlabs",
       "tagline": "AI voice generation and cloning",
-      "descriptionShort": "Voice, TTS, and narration.",
+      "descriptionShort": "A category leader in AI voice generation and voice cloning, positioned as infrastructure for scalable speech across products and content pipelines.",
       "descriptionLong": "Voice synthesis platform for realistic speech generation.",
       "status": "ACTIVE",
       "skillLevel": "BEGINNER",
@@ -430,7 +460,8 @@
       ],
       "tier": 3,
       "links": {
-        "websiteUrl": "https://elevenlabs.io"
+        "websiteUrl": "https://elevenlabs.io",
+        "website_url": "https://elevenlabs.io"
       },
       "lastVerifiedAt": "2026-01-05T00:00:00.000Z",
       "updates": [
@@ -459,13 +490,26 @@
         "freshnessScore": 70,
         "communityScore": 45,
         "rankScore": 66
-      }
+      },
+      "analyst_brief": "ElevenLabs is differentiated by voice quality, breadth of voice features (TTS, cloning, dubbing, agents), and an API-first posture that makes it easy to embed speech into products. Its moat is voice quality + developer adoption: once a product's voice layer is integrated, switching costs rise due to tuning, licensing, and UX expectations. Compared to generalist audio tools, it is more specialized and enterprise-ready; compared to hyperscaler offerings, it often competes on quality and product focus. Best for content studios, game/app developers, and enterprises building voice experiences or localized narration at scale.",
+      "pros": [
+        "High perceived voice quality and expressive control relative to many generic TTS options",
+        "API-first design supports product embedding, automation, and scalable content generation",
+        "Broad feature set spanning TTS, cloning, dubbing, and agent-style voice experiences"
+      ],
+      "cons": [
+        "Misuse risk (impersonation/deepfake concerns) can trigger policy and brand-safety constraints",
+        "Costs can scale quickly with high-volume generation and multiple languages/voices",
+        "Regulatory and rights-management requirements add complexity for commercial deployments"
+      ],
+      "pricing_model": "Freemium / tiered subscriptions (e.g., Starter $5/mo and up) / Enterprise / API (usage-based)",
+      "platforms_string": "Web, API"
     },
     {
       "name": "n8n",
       "slug": "n8n",
       "tagline": "Workflow automation",
-      "descriptionShort": "Automate tasks with nodes and integrations.",
+      "descriptionShort": "A workflow automation platform positioned between no-code ease and developer-grade extensibility, with strong self-hosting traction.",
       "descriptionLong": "Automation platform for connecting services and building workflows.",
       "status": "ACTIVE",
       "skillLevel": "INTERMEDIATE",
@@ -482,7 +526,8 @@
       ],
       "tier": 3,
       "links": {
-        "websiteUrl": "https://n8n.io"
+        "websiteUrl": "https://n8n.io",
+        "website_url": "https://n8n.io"
       },
       "lastVerifiedAt": "2026-01-05T00:00:00.000Z",
       "updates": [
@@ -511,13 +556,26 @@
         "freshnessScore": 65,
         "communityScore": 55,
         "rankScore": 62
-      }
+      },
+      "analyst_brief": "n8n is differentiated by flexible workflow composition (visual nodes plus code) and strong integration breadth, making it popular with technical operators who outgrow purely no-code tools. Its moat is a large integration catalog, a strong self-hosting community, and an execution model that scales from personal automations to production pipelines. Compared with Zapier/Make, n8n typically wins on extensibility and control; compared with full custom pipelines, it reduces build time and operational overhead. Best for growth/ops, RevOps, data teams, and builders who want automation with maintainable complexity.",
+      "pros": [
+        "Hybrid model (visual + code) supports advanced logic without abandoning usability",
+        "Self-hosting option enables control over data, costs, and compliance posture",
+        "Large integration surface area suitable for end-to-end operational workflows"
+      ],
+      "cons": [
+        "Production reliability and observability depend heavily on deployment maturity (especially self-hosted)",
+        "Complex workflows can become hard to maintain without engineering discipline",
+        "Some collaboration/governance features may require higher-tier plans"
+      ],
+      "pricing_model": "Open-source (self-host) + Cloud subscriptions (tiered, execution-based) + Business/Enterprise",
+      "platforms_string": "Web (Cloud), Self-hosted (Docker/Kubernetes), API/Webhooks"
     },
     {
       "name": "Cursor",
       "slug": "cursor",
       "tagline": "AI-first code editor",
-      "descriptionShort": "Ship faster with AI inside your IDE.",
+      "descriptionShort": "An AI-native coding environment that productizes agentic code changes and deep repo-aware assistance inside the IDE.",
       "descriptionLong": "An AI-enabled editor that helps with multi-file coding and refactors.",
       "status": "ACTIVE",
       "skillLevel": "BEGINNER",
@@ -534,7 +592,8 @@
       ],
       "tier": 3,
       "links": {
-        "websiteUrl": "https://cursor.com"
+        "websiteUrl": "https://cursor.com",
+        "website_url": "https://cursor.com"
       },
       "lastVerifiedAt": "2026-01-05T00:00:00.000Z",
       "updates": [
@@ -563,13 +622,26 @@
         "freshnessScore": 70,
         "communityScore": 40,
         "rankScore": 63
-      }
+      },
+      "analyst_brief": "Cursor's strength is developer workflow integration: it treats AI as a first-class IDE primitive, not a plugin, enabling higher-leverage refactors and multi-file edits with less context wrangling. Its moat is product execution around \"agent + editor\" ergonomics and fast adoption among power users who want more than autocomplete. Compared to GitHub Copilot, Cursor often feels more agentic and workflow-oriented; compared to general chat tools, it reduces friction by keeping context and actions inside the IDE. Best for professional developers and small teams aiming to accelerate feature delivery and refactoring cycles.",
+      "pros": [
+        "Agentic multi-file edits and codebase-aware operations integrated directly into the IDE",
+        "Strong developer UX for prompting, context management, and iterative fixes without leaving the editor",
+        "Multi-model access options that allow optimization for quality, speed, or cost (plan-dependent)"
+      ],
+      "cons": [
+        "Reliance on external model providers and usage limits can make costs and performance variable",
+        "Security/compliance requirements may be a blocker for some orgs without enterprise controls",
+        "Learning curve for teams used to traditional IDE + plugin workflows"
+      ],
+      "pricing_model": "Freemium / Pro (~$20/mo) / higher tiers (e.g., Pro+ and Ultra) / Business & Enterprise",
+      "platforms_string": "macOS, Windows, Linux"
     },
     {
       "name": "GitHub Copilot",
       "slug": "github-copilot",
       "tagline": "AI pair programmer",
-      "descriptionShort": "Code suggestions in your editor.",
+      "descriptionShort": "The incumbent AI coding assistant embedded across major IDEs and GitHub, optimized for broad developer distribution and enterprise adoption.",
       "descriptionLong": "AI-assisted coding tool integrated with GitHub and popular IDEs.",
       "status": "ACTIVE",
       "skillLevel": "BEGINNER",
@@ -585,7 +657,8 @@
       ],
       "tier": 3,
       "links": {
-        "websiteUrl": "https://github.com/features/copilot"
+        "websiteUrl": "https://github.com/features/copilot",
+        "website_url": "https://github.com/features/copilot"
       },
       "lastVerifiedAt": "2026-01-05T00:00:00.000Z",
       "updates": [
@@ -614,13 +687,26 @@
         "freshnessScore": 65,
         "communityScore": 70,
         "rankScore": 72
-      }
+      },
+      "analyst_brief": "Copilot's core advantage is distribution: it lives inside the dominant developer surfaces (IDEs + GitHub), making adoption friction low for individuals and large organizations. Its moat is ecosystem embedding, enterprise procurement channels, and steady product expansion from autocomplete into chat and broader coding assistance. Compared to Cursor, it can feel less \"agentic\" but is often easier to standardize at scale; compared to standalone LLMs, it wins on contextual in-IDE delivery. Best for teams that want a standardized, widely supported coding assistant with strong organizational controls.",
+      "pros": [
+        "Ubiquitous IDE and GitHub integration makes rollout and daily use frictionless",
+        "Strong enterprise packaging (policy controls, seat management, security posture) at scale",
+        "Solid baseline coding assistance across languages with minimal workflow disruption"
+      ],
+      "cons": [
+        "Agentic multi-step changes and repo-wide refactors can be less seamless than AI-native IDEs",
+        "Quality varies by language/framework and can still require strong review discipline",
+        "Potential IP/security concerns require careful policy configuration and developer training"
+      ],
+      "pricing_model": "Free (limited) / Individual paid tier / Business (~$19/user/mo) / Enterprise (~$39/user/mo)",
+      "platforms_string": "VS Code, JetBrains IDEs, Visual Studio, Neovim (via extensions), GitHub.com, CLI"
     },
     {
       "name": "Notion AI",
       "slug": "notion-ai",
       "tagline": "AI inside Notion for writing and summaries",
-      "descriptionShort": "Docs, summaries, and content generation.",
+      "descriptionShort": "AI embedded into Notion's workspace, optimized for turning internal docs and knowledge bases into actionable drafting and Q&A workflows.",
       "descriptionLong": "AI features inside Notion for drafting, summarizing, and organizing content.",
       "status": "ACTIVE",
       "skillLevel": "BEGINNER",
@@ -639,7 +725,8 @@
       ],
       "tier": 3,
       "links": {
-        "websiteUrl": "https://www.notion.so"
+        "websiteUrl": "https://www.notion.so",
+        "website_url": "https://www.notion.so"
       },
       "lastVerifiedAt": "2026-01-05T00:00:00.000Z",
       "updates": [
@@ -668,13 +755,26 @@
         "freshnessScore": 60,
         "communityScore": 55,
         "rankScore": 60
-      }
+      },
+      "analyst_brief": "Notion AI's strength is context: it sits where team knowledge lives, enabling drafting, summarization, and Q&A directly inside documents and projects. Its moat is switching cost in knowledge bases and the collaboration graph of a team's workspace, making AI features more valuable as adoption increases. Compared to standalone LLMs, it can be less \"general,\" but more useful for org-specific content because of proximity to internal data. Best for teams standardizing on Notion for docs, wikis, and lightweight project management.",
+      "pros": [
+        "Native access to workspace context reduces copy/paste and improves relevance for internal content",
+        "High adoption leverage inside teams already standardized on Notion (low marginal friction)",
+        "Consolidates knowledge workflows (docs, tasks, databases) with AI assistance in-place"
+      ],
+      "cons": [
+        "Less flexible than standalone assistants for cross-tool workflows and advanced tool use",
+        "Output quality depends on workspace hygiene; poor documentation yields weak results",
+        "Organizations may face governance concerns around what data AI can access and how it's used"
+      ],
+      "pricing_model": "Included with Notion Business and Enterprise (limited trial usage on lower tiers)",
+      "platforms_string": "Web, macOS, Windows, iOS, Android"
     },
     {
       "name": "Canva",
       "slug": "canva",
       "tagline": "Design platform with AI features",
-      "descriptionShort": "Templates, design, and AI assists.",
+      "descriptionShort": "The mainstream design platform where AI features are bundled into a broad template-first creation workflow for non-designers and teams.",
       "descriptionLong": "Design tool with AI-powered creation features for marketers and creators.",
       "status": "ACTIVE",
       "skillLevel": "BEGINNER",
@@ -695,7 +795,8 @@
       ],
       "tier": 3,
       "links": {
-        "websiteUrl": "https://www.canva.com"
+        "websiteUrl": "https://www.canva.com",
+        "website_url": "https://www.canva.com"
       },
       "lastVerifiedAt": "2026-01-05T00:00:00.000Z",
       "updates": [
@@ -724,13 +825,26 @@
         "freshnessScore": 60,
         "communityScore": 65,
         "rankScore": 68
-      }
+      },
+      "analyst_brief": "Canva's strength is distribution via ease-of-use: templates, collaboration, and an end-to-end asset pipeline that turns \"design\" into an accessible workflow for non-experts. Its moat is switching costs in team asset libraries/brand kits, a massive template marketplace, and embedded collaboration. Compared to Adobe, Canva trades depth for speed and approachability; AI features increasingly narrow the gap for common marketing tasks. Best for marketing teams, SMBs, and content creators producing high-volume, brand-consistent assets quickly.",
+      "pros": [
+        "Template + collaboration workflow accelerates production for non-designers",
+        "Centralized brand controls and shared libraries improve consistency across teams",
+        "Integrated AI features reduce time for common edits (resize, background removal, variations) within the same tool"
+      ],
+      "cons": [
+        "Less control than pro-grade design suites for advanced typography, layout, and print workflows",
+        "Template-heavy outputs can look homogenized without strong creative direction",
+        "AI-generated assets may raise licensing and brand-safety considerations depending on use case"
+      ],
+      "pricing_model": "Freemium / Pro / Teams / Enterprise",
+      "platforms_string": "Web, iOS, Android, Desktop apps"
     },
     {
       "name": "Descript",
       "slug": "descript",
       "tagline": "Audio/video editing with AI",
-      "descriptionShort": "Edit video by editing text.",
+      "descriptionShort": "A text-first audio/video editor that uses AI to compress podcast and video post-production into a document-style workflow.",
       "descriptionLong": "Editing platform that uses AI to simplify audio and video production.",
       "status": "ACTIVE",
       "skillLevel": "INTERMEDIATE",
@@ -749,7 +863,8 @@
       ],
       "tier": 3,
       "links": {
-        "websiteUrl": "https://www.descript.com"
+        "websiteUrl": "https://www.descript.com",
+        "website_url": "https://www.descript.com"
       },
       "lastVerifiedAt": "2026-01-05T00:00:00.000Z",
       "updates": [
@@ -778,7 +893,20 @@
         "freshnessScore": 55,
         "communityScore": 40,
         "rankScore": 53
-      }
+      },
+      "analyst_brief": "Descript's advantage is workflow design: editing via transcript lowers the skill barrier and speeds up common operations like cuts, captions, and repurposing. Its moat is a strong product fit for creators and teams producing recurring content, plus integrated AI tools that reduce dependency on specialist editors. Compared with traditional NLE/DAW tools, it trades depth for speed; compared with lightweight web editors, it offers a more complete post pipeline. Best for podcasters, social teams, and marketers creating high-volume talking-head and podcast-style content.",
+      "pros": [
+        "Transcript-first editing materially reduces time for common audio/video cuts and revisions",
+        "Integrated tooling for captions, repurposing, and AI-assisted editing in one environment",
+        "Team-oriented workflows (brand controls and collaboration) available on higher plans"
+      ],
+      "cons": [
+        "Power users may hit limits versus pro NLE/DAW tools for advanced mixing, grading, and effects",
+        "Transcription and AI quality can vary by audio conditions and language",
+        "Usage limits (minutes/credits) can become constraining for high-throughput teams"
+      ],
+      "pricing_model": "Freemium / paid plans (starting around $16/mo; creator and business tiers) / Enterprise",
+      "platforms_string": "macOS, Windows, Web"
     }
   ]
 }

@@ -56,9 +56,12 @@ export default async function ToolPage({ params }: Props) {
             {/* === CHANGED: LEFT COLUMN (Logo + Vote Button) === */}
             <div className="flex flex-col items-center gap-3">
               {/* Existing Logo Code */}
-              <div className="h-24 w-24 flex-shrink-0 overflow-hidden rounded-2xl border border-slate-700 shadow-sm bg-slate-800">
+              <div
+                className="h-24 w-24 flex-shrink-0 overflow-hidden rounded-2xl border border-slate-700 shadow-sm bg-slate-800"
+                style={{ backgroundColor: "white" }}
+              >
                 <img
-                  src={getLogoUrl(tool.name)}
+                  src={`/logos/${tool.slug}.png`}
                   alt={`${tool.name} logo`}
                   className="h-full w-full object-cover"
                 />
@@ -95,7 +98,7 @@ export default async function ToolPage({ params }: Props) {
               About {tool.name}
             </h2>
             <p className="text-slate-300 leading-relaxed mb-6">
-              {tool.descriptionLong}
+              {tool.analyst_brief || tool.descriptionLong}
             </p>
 
             <div className="flex flex-wrap gap-2">
@@ -276,11 +279,11 @@ export default async function ToolPage({ params }: Props) {
             <div className="mb-4">
               <span className="text-sm text-slate-500">Website</span>
               <div className="font-medium text-slate-200 break-words truncate">
-                {tool.links?.websiteUrl || "N/A"}
+                {tool.links?.websiteUrl || tool.links?.website_url || "N/A"}
               </div>
             </div>
             <a
-              href={tool.links?.websiteUrl || "#"}
+              href={tool.links?.websiteUrl || tool.links?.website_url || "#"}
               target="_blank"
               rel="noopener noreferrer"
               className="block w-full rounded-xl bg-blue-600 px-4 py-4 text-center text-sm font-semibold text-white hover:bg-blue-500 transition-colors min-h-[48px] flex items-center justify-center"
@@ -288,6 +291,30 @@ export default async function ToolPage({ params }: Props) {
               Visit Website ↗
             </a>
           </div>
+
+          {/* Pricing Model */}
+          {tool.pricing_model && (
+            <div className="rounded-2xl border border-slate-800 bg-slate-900 p-6">
+              <h3 className="text-sm font-semibold text-white mb-4 uppercase tracking-wider">
+                Pricing
+              </h3>
+              <p className="text-slate-300 text-sm leading-relaxed">
+                {tool.pricing_model}
+              </p>
+            </div>
+          )}
+
+          {/* Platforms */}
+          {tool.platforms_string && (
+            <div className="rounded-2xl border border-slate-800 bg-slate-900 p-6">
+              <h3 className="text-sm font-semibold text-white mb-4 uppercase tracking-wider">
+                Platforms
+              </h3>
+              <p className="text-slate-300 text-sm leading-relaxed">
+                {tool.platforms_string}
+              </p>
+            </div>
+          )}
 
           {/* Tech Specs */}
           <div className="rounded-2xl border border-slate-800 bg-slate-900 p-6">
@@ -331,25 +358,27 @@ export default async function ToolPage({ params }: Props) {
           </div>
 
           {/* Market Data */}
-          <div className="rounded-2xl border border-slate-800 bg-slate-900 p-6">
+          {/* <div className="rounded-2xl border border-slate-800 bg-slate-900 p-6">
             <h3 className="text-sm font-semibold text-white mb-4 uppercase tracking-wider">
               Market Data
             </h3>
             <div className="grid grid-cols-2 gap-4">
               <div className="p-3 bg-slate-950 rounded-lg border border-slate-800">
-                <div className="text-xs text-slate-500 mb-1">Rank</div>
+                <div className="text-xs text-slate-500 mb-1">AI Index</div>
                 <div className="text-xl font-mono font-bold text-white">
-                  #{tool.score?.rankScore}
+                  {tool.indexScore || tool.score?.rankScore?.toFixed(1) || "-"}
                 </div>
               </div>
-              <div className="p-3 bg-slate-950 rounded-lg border border-slate-800">
-                <div className="text-xs text-slate-500 mb-1">Trend</div>
-                <div className="text-xl font-mono font-bold text-green-400">
-                  +{tool.score?.trendScore}%
+              {tool.trendPercentage && (
+                <div className="p-3 bg-slate-950 rounded-lg border border-slate-800">
+                  <div className="text-xs text-slate-500 mb-1">Trend</div>
+                  <div className="text-xl font-mono font-bold text-green-400">
+                    {tool.trendPercentage}
+                  </div>
                 </div>
-              </div>
+              )}
             </div>
-          </div>
+          </div> */}
         </div>
       </div>
 

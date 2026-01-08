@@ -22,14 +22,18 @@ export type Tool = {
   tagline: string;
   descriptionShort?: string;
   descriptionLong?: string;
+  analyst_brief?: string; // New analyst brief field
   status?: ToolStatus;
   skillLevel?: SkillLevel;
   pricingModel?: PricingModel;
+  pricing_model?: string; // New string-based pricing model field
   platforms: PlatformType[];
+  platforms_string?: string; // New string-based platforms field
   categories: string[];
   useCases: string[];
   links?: {
     websiteUrl?: string;
+    website_url?: string; // New website_url field
     pricingUrl?: string;
     docsUrl?: string;
     githubUrl?: string;
