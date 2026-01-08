@@ -48,6 +48,11 @@ export type Tool = {
   };
   lastVerifiedAt?: string;
   updates?: ToolUpdate[];
+  tier?: number; // 1 = The Kings, 2 = The Challengers, 3 = The Rest
+  indexScore?: string; // Formatted 0-100 index score (e.g., "98.5")
+  rawScore?: number; // Raw numeric score for sorting (0-99.9)
+  rankScore?: number; // Legacy: Calculated market cap-style ranking (deprecated)
+  trendPercentage?: string; // Calculated trend percentage (e.g., "+1.2%")
   // Kept as 'score' (singular) to match your existing pages
   score?: {
     popularityScore?: number;

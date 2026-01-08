@@ -1,4 +1,4 @@
-import { loadSeed } from "@/lib/data";
+import { getRankedTools } from "@/lib/ranking";
 import ToolDirectory from "@/components/tool-directory"; // <--- Import the new file
 import NewsSection from "@/components/news-section";
 
@@ -6,10 +6,8 @@ import NewsSection from "@/components/news-section";
 export const revalidate = 3600;
 
 export default async function Home() {
-  const seed = loadSeed();
-  const tools = [...seed.tools].sort(
-    (a, b) => (b.score?.rankScore ?? 0) - (a.score?.rankScore ?? 0)
-  );
+  // Use getRankedTools() instead of direct seed import
+  const tools = await getRankedTools();
 
   return (
     <main className="mx-auto max-w-6xl px-4 py-12 relative">

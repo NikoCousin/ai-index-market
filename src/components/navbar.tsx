@@ -11,17 +11,15 @@ export default function Navbar() {
   // Close menu when clicking outside
   useEffect(() => {
     function handleClickOutside(event: MouseEvent) {
-      if (
-        menuRef.current &&
-        !menuRef.current.contains(event.target as Node)
-      ) {
+      if (menuRef.current && !menuRef.current.contains(event.target as Node)) {
         setMobileMenuOpen(false);
       }
     }
 
     if (mobileMenuOpen) {
       document.addEventListener("mousedown", handleClickOutside);
-      return () => document.removeEventListener("mousedown", handleClickOutside);
+      return () =>
+        document.removeEventListener("mousedown", handleClickOutside);
     }
   }, [mobileMenuOpen]);
 
@@ -29,10 +27,7 @@ export default function Navbar() {
     <header className="sticky top-0 z-50 w-full border-b border-slate-800 bg-slate-950/80 backdrop-blur-md">
       <div className="container mx-auto flex h-16 items-center justify-between px-4">
         {/* Logo */}
-        <Link
-          href="/"
-          className="flex items-center gap-2 group cursor-pointer"
-        >
+        <Link href="/" className="flex items-center gap-2 group cursor-pointer">
           <div className="h-8 w-8 rounded-lg bg-blue-600 flex items-center justify-center text-white font-bold shadow-lg shadow-blue-900/20 group-hover:bg-blue-500 transition-colors">
             AI
           </div>
@@ -55,12 +50,12 @@ export default function Navbar() {
           >
             Categories
           </Link>
-          <Link
+          {/* <Link
             href="/use-cases"
             className="hover:text-white transition-colors cursor-pointer"
           >
             Use Cases
-          </Link>
+          </Link> */}
           <Link
             href="/blog"
             className="hover:text-white transition-colors cursor-pointer"

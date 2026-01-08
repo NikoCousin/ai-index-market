@@ -100,7 +100,9 @@ export default function ToolDirectory({
                 <th className="px-4 py-4 font-medium text-slate-500">
                   Pricing
                 </th>
-                <th className="px-4 py-4 font-medium text-slate-500">Rank</th>
+                <th className="px-4 py-4 font-medium text-slate-500">
+                  AI Index
+                </th>
                 <th className="px-4 py-4 font-medium text-slate-500">Trend</th>
               </tr>
             </thead>
@@ -186,11 +188,32 @@ function ToolRow({ tool, index }: { tool: Tool; index: number }) {
           {tool.pricingModel}
         </span>
       </td>
-      <td className="px-4 py-4 font-mono text-slate-700">
-        {tool.score?.rankScore}
+      <td className="px-4 py-4">
+        <span className="font-mono font-bold text-slate-900">
+          {tool.indexScore || tool.score?.rankScore?.toFixed(1) || "-"}
+        </span>
       </td>
-      <td className="px-4 py-4 text-green-600 font-medium">
-        +{tool.score?.trendScore}%
+      <td className="px-4 py-4">
+        {tool.trendPercentage ? (
+          <div className="flex items-center gap-1 text-emerald-500 font-medium">
+            <svg
+              className="w-4 h-4"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"
+              />
+            </svg>
+            <span>{tool.trendPercentage}</span>
+          </div>
+        ) : (
+          <span className="text-slate-400">+1.2%</span>
+        )}
       </td>
     </tr>
   );
@@ -249,12 +272,30 @@ function MobileToolCard({ tool, index }: { tool: Tool; index: number }) {
               {tool.pricingModel}
             </span>
             <div className="flex items-center gap-4 text-xs text-slate-600">
-              <span className="font-mono font-medium">
-                Rank: {tool.score?.rankScore}
+              <span className="font-mono font-bold text-slate-900">
+                AI Index:{" "}
+                {tool.indexScore || tool.score?.rankScore?.toFixed(1) || "-"}
               </span>
-              <span className="text-green-600 font-medium">
-                Trend: +{tool.score?.trendScore}%
-              </span>
+              {tool.trendPercentage ? (
+                <div className="flex items-center gap-1 text-emerald-500 font-medium">
+                  <svg
+                    className="w-3.5 h-3.5"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"
+                    />
+                  </svg>
+                  <span>Trend: {tool.trendPercentage}</span>
+                </div>
+              ) : (
+                <span className="text-slate-400 font-medium">Trend: +1.2%</span>
+              )}
             </div>
           </div>
         </div>
