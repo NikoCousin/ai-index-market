@@ -33,11 +33,6 @@ export default async function ToolPage({ params }: Props) {
   // Fetch related tools
   const relatedTools = getRelatedTools(tool.slug, tool.categories[0]);
 
-  const getLogoUrl = (name: string) =>
-    `https://ui-avatars.com/api/?name=${encodeURIComponent(
-      name
-    )}&background=random&color=fff&size=200&bold=true`;
-
   return (
     <main className="container mx-auto px-4 py-12 max-w-6xl text-slate-200">
       {/* Breadcrumb */}
@@ -391,12 +386,11 @@ export default async function ToolPage({ params }: Props) {
                 className="group block rounded-xl border border-slate-800 bg-slate-900 p-5 hover:border-blue-500 transition-colors"
               >
                 <div className="flex items-center gap-4 mb-3">
-                  <div className="h-10 w-10 rounded-lg bg-slate-800 overflow-hidden">
-                    <img
-                      src={getLogoUrl(t.name)}
-                      className="h-full w-full object-cover"
-                    />
-                  </div>
+                  <ToolLogo
+                    name={t.name}
+                    websiteUrl={t.links?.website_url || t.links?.websiteUrl}
+                    className="h-10 w-10 flex-shrink-0 rounded-lg"
+                  />
                   <div>
                     <div className="font-semibold text-white group-hover:text-blue-400">
                       {t.name}
