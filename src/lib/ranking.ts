@@ -15,7 +15,7 @@ interface VoteCounts {
 /**
  * Helper function to parse android_installs_range string (e.g., '100M+', '50K') to number
  */
-function parseAndroidInstalls(range: string | number | undefined | null): number {
+export function parseAndroidInstalls(range: string | number | undefined | null): number {
   if (!range) return 0;
   if (typeof range === 'number') return range;
   
@@ -38,7 +38,7 @@ function parseAndroidInstalls(range: string | number | undefined | null): number
  * Calculate Market Index Score V1 using weighted formula:
  * 50% Website Traffic + 30% Social Attention + 20% Mobile Presence
  */
-function calculateMarketIndexScoreV1(
+export function calculateMarketIndexScoreV1(
   traffic: number | undefined | null,
   xMentions: number | undefined | null,
   youtubeVideos: number | undefined | null,

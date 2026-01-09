@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { loadSeed, getRelatedTools } from "@/lib/data";
+import { loadSeed, getRelatedTools, type Tool, type ToolUpdate } from "@/lib/data";
 import { getToolBySlug } from "@/lib/supabase/queries";
 import VoteButton from "@/components/vote-button";
 import ToolLogo from "@/components/tool-logo";
@@ -276,7 +276,7 @@ export default async function ToolPage({ params }: Props) {
 
             {tool?.categories && tool.categories.length > 0 && (
               <div className="flex flex-wrap gap-2">
-                {tool.categories.map((cat) => (
+                {tool.categories.map((cat: string) => (
                   <Link
                     key={cat}
                     href={`/categories/${cat}`}
@@ -302,7 +302,7 @@ export default async function ToolPage({ params }: Props) {
 
                 {/* Timeline Items */}
                 <div className="space-y-8">
-                  {tool.updates.map((update, index) => {
+                  {tool.updates.map((update: ToolUpdate, index: number) => {
                     const getTypeColor = () => {
                       switch (update.type) {
                         case "MAJOR":
@@ -383,7 +383,7 @@ export default async function ToolPage({ params }: Props) {
                   <span>👍</span> The Good
                 </h3>
                 <ul className="space-y-3">
-                  {tool.pros?.map((pro, i) => (
+                  {tool.pros?.map((pro: string, i: number) => (
                     <li
                       key={i}
                       className="flex items-start gap-3 text-sm text-slate-300"
@@ -417,7 +417,7 @@ export default async function ToolPage({ params }: Props) {
                   <span>👎</span> The Bad
                 </h3>
                 <ul className="space-y-3">
-                  {tool.cons?.map((con, i) => (
+                  {tool.cons?.map((con: string, i: number) => (
                     <li
                       key={i}
                       className="flex items-start gap-3 text-sm text-slate-300"
@@ -595,7 +595,7 @@ export default async function ToolPage({ params }: Props) {
             Alternatives to consider
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {relatedTools.map((t) => (
+            {relatedTools.map((t: Tool) => (
               <Link
                 key={t.slug}
                 href={`/tools/${t.slug}`}

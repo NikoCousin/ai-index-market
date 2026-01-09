@@ -98,6 +98,32 @@ export function loadSeed(): SeedData {
 
 // --- 3. New Helpers (For Category Pages) ---
 
+/**
+ * Maps URL slugs to database category names
+ * This bridges the gap between URL-friendly slugs and database category strings
+ */
+export function getCategoryNameFromSlug(slug: string): string {
+  const slugToDbName: Record<string, string> = {
+    // Direct mappings
+    'audio': 'AI Voice',
+    'audio-voice': 'AI Voice',
+    'agents': 'Developer Tool',
+    'automation-agents': 'Developer Tool',
+    'marketing': 'Marketing',
+    'marketing-tools': 'Marketing',
+    'dev-tools': 'Developer Tool',
+    'developer-tools': 'Developer Tool',
+    'llms': 'AI Assistant',
+    // Keep other mappings as-is (fallback to unslugify)
+    'video-generation': 'Video Generation',
+    'image-generation': 'Image Generation',
+    'productivity': 'Productivity',
+  };
+
+  // Return mapped name if exists, otherwise return null to trigger fallback
+  return slugToDbName[slug] || '';
+}
+
 // Used by your new /categories/[slug] page
 export async function getToolsByCategory(categorySlug: string) {
   const data = loadSeed();
