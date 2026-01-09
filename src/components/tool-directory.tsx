@@ -106,7 +106,6 @@ export default function ToolDirectory({
                 <th className="px-4 py-4 font-medium text-slate-500">
                   AI Index
                 </th>
-                <th className="px-4 py-4 font-medium text-slate-500">Trend</th>
               </tr>
             </thead>
             <tbody className="divide-y divide-slate-100">
@@ -116,7 +115,7 @@ export default function ToolDirectory({
                 ))
               ) : (
                 <tr>
-                  <td colSpan={6} className="text-center py-12 text-slate-500">
+                  <td colSpan={5} className="text-center py-12 text-slate-500">
                     No tools found for "{query}"
                   </td>
                 </tr>
@@ -150,6 +149,7 @@ function ToolRow({ tool, index }: { tool: Tool; index: number }) {
       <td className="px-4 py-4">
         <ToolLogo
           name={tool.name}
+          tool_name={tool.tool_name}
           websiteUrl={tool.links?.website_url || tool.links?.websiteUrl}
           className="h-10 w-10 flex-shrink-0 rounded-lg"
         />
@@ -157,10 +157,10 @@ function ToolRow({ tool, index }: { tool: Tool; index: number }) {
       <td className="px-4 py-4">
         <div className="font-semibold text-slate-900">
           <Link
-            href={`/tools/${tool.slug}`}
+            href={`/tools/${tool.slug || tool.tool_slug}`}
             className="hover:text-blue-600 hover:underline"
           >
-            {tool.name}
+            {tool.tool_name || tool.name}
           </Link>
         </div>
         <div className="text-xs text-slate-500 mt-0.5 max-w-full sm:max-w-[200px] truncate">
@@ -181,31 +181,11 @@ function ToolRow({ tool, index }: { tool: Tool; index: number }) {
         </span>
       </td>
       <td className="px-4 py-4">
-        <span className="font-mono font-bold text-slate-900">
-          {tool.indexScore || tool.score?.rankScore?.toFixed(1) || "-"}
+        <span className="font-bold text-slate-900 tabular-nums">
+          {tool.marketIndexScore !== undefined 
+            ? tool.marketIndexScore 
+            : tool.indexScore || tool.score?.rankScore?.toFixed(1) || "-"}
         </span>
-      </td>
-      <td className="px-4 py-4">
-        {tool.trendPercentage ? (
-          <div className="flex items-center gap-1 text-emerald-500 font-medium">
-            <svg
-              className="w-4 h-4"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"
-              />
-            </svg>
-            <span>{tool.trendPercentage}</span>
-          </div>
-        ) : (
-          <span className="text-slate-400">+1.2%</span>
-        )}
       </td>
     </tr>
   );
@@ -215,13 +195,14 @@ function ToolRow({ tool, index }: { tool: Tool; index: number }) {
 function MobileToolCard({ tool, index }: { tool: Tool; index: number }) {
   return (
     <Link
-      href={`/tools/${tool.slug}`}
+      href={`/tools/${tool.slug || tool.tool_slug}`}
       className="block bg-white rounded-xl border border-slate-200 shadow-sm p-4 hover:shadow-md transition-all"
     >
       <div className="flex items-start gap-4">
         {/* Logo */}
         <ToolLogo
           name={tool.name}
+          tool_name={tool.tool_name}
           websiteUrl={tool.links?.website_url || tool.links?.websiteUrl}
           className="h-16 w-16 flex-shrink-0 rounded-lg"
         />
@@ -231,7 +212,7 @@ function MobileToolCard({ tool, index }: { tool: Tool; index: number }) {
           <div className="flex items-start justify-between gap-2 mb-1">
             <div className="flex-1 min-w-0">
               <div className="font-semibold text-slate-900 text-base mb-1">
-                #{index + 1} {tool.name}
+                #{index + 1} {tool.tool_name || tool.name}
               </div>
               <p className="text-xs text-slate-500 line-clamp-2">
                 {tool.tagline}
@@ -253,30 +234,12 @@ function MobileToolCard({ tool, index }: { tool: Tool; index: number }) {
               {tool.pricingModel}
             </span>
             <div className="flex items-center gap-4 text-xs text-slate-600">
-              <span className="font-mono font-bold text-slate-900">
-                AI Index:{" "}
-                {tool.indexScore || tool.score?.rankScore?.toFixed(1) || "-"}
+              <span className="font-bold text-slate-900 tabular-nums">
+                AI Market Index:{" "}
+                {tool.marketIndexScore !== undefined 
+                  ? tool.marketIndexScore 
+                  : tool.indexScore || tool.score?.rankScore?.toFixed(1) || "-"}
               </span>
-              {tool.trendPercentage ? (
-                <div className="flex items-center gap-1 text-emerald-500 font-medium">
-                  <svg
-                    className="w-3.5 h-3.5"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"
-                    />
-                  </svg>
-                  <span>Trend: {tool.trendPercentage}</span>
-                </div>
-              ) : (
-                <span className="text-slate-400 font-medium">Trend: +1.2%</span>
-              )}
             </div>
           </div>
         </div>

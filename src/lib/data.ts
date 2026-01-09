@@ -65,6 +65,16 @@ export type Tool = {
     communityScore?: number;
     rankScore?: number;
   };
+  // Database columns for Market Index Score V1 calculation
+  traffic_monthly_est?: number;
+  x_mentions_30d?: number;
+  youtube_videos_90d?: number;
+  ios_reviews_count?: number;
+  android_installs_range?: number | string;
+  android_reviews_count?: number;
+  tool_name?: string; // Database tool name
+  tool_slug?: string; // Database tool slug
+  marketIndexScore?: number; // Calculated Market Index Score V1 (0-100)
 };
 
 export type Category = {

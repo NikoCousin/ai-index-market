@@ -1,0 +1,596 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://aiindex.example/schemas/ai-index-v1.json",
+  "title": "AI Index v1.0 — Methodology + Tool Data",
+  "type": "object",
+  "required": ["methodology", "tool"],
+  "additionalProperties": false,
+  "properties": {
+    "methodology": {
+      "$ref": "#/$defs/methodology"
+    },
+    "tool": {
+      "$ref": "#/$defs/tool"
+    }
+  },
+  "$defs": {
+    "methodology": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "version",
+        "dimensions",
+        "weights",
+        "normalization",
+        "aggregation",
+        "anti_gaming",
+        "scoring_schedule"
+      ],
+      "properties": {
+        "version": {
+          "type": "string",
+          "const": "1.0.0"
+        },
+        "dimensions": {
+          "type": "array",
+          "minItems": 5,
+          "maxItems": 5,
+          "items": { "$ref": "#/$defs/dimension_definition" }
+        },
+        "weights": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "adoption",
+            "engagement",
+            "attention",
+            "authority",
+            "momentum"
+          ],
+          "properties": {
+            "adoption": { "type": "number", "minimum": 0, "maximum": 1 },
+            "engagement": { "type": "number", "minimum": 0, "maximum": 1 },
+            "attention": { "type": "number", "minimum": 0, "maximum": 1 },
+            "authority": { "type": "number", "minimum": 0, "maximum": 1 },
+            "momentum": { "type": "number", "minimum": 0, "maximum": 1 }
+          }
+        },
+        "normalization": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["default_method", "methods", "missing_data_policy"],
+          "properties": {
+            "default_method": {
+              "type": "string",
+              "enum": [
+                "percentile",
+                "log_percentile",
+                "rank_percentile",
+                "minmax",
+                "zscore"
+              ]
+            },
+            "methods": {
+              "type": "array",
+              "minItems": 1,
+              "items": { "$ref": "#/$defs/normalization_method" }
+            },
+            "missing_data_policy": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["strategy", "neutral_value", "notes"],
+              "properties": {
+                "strategy": {
+                  "type": "string",
+                  "enum": [
+                    "neutral",
+                    "dimension_reweight",
+                    "global_impute",
+                    "metric_impute"
+                  ]
+                },
+                "neutral_value": {
+                  "type": "number",
+                  "minimum": 0,
+                  "maximum": 100
+                },
+                "notes": { "type": "string" }
+              }
+            }
+          }
+        },
+        "aggregation": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "dimension_aggregation",
+            "final_aggregation",
+            "min_metrics_required"
+          ],
+          "properties": {
+            "dimension_aggregation": {
+              "type": "string",
+              "enum": ["weighted_mean", "mean", "median", "trimmed_mean"]
+            },
+            "final_aggregation": {
+              "type": "string",
+              "enum": ["weighted_sum"]
+            },
+            "min_metrics_required": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "adoption",
+                "engagement",
+                "attention",
+                "authority",
+                "momentum"
+              ],
+              "properties": {
+                "adoption": { "type": "integer", "minimum": 1 },
+                "engagement": { "type": "integer", "minimum": 1 },
+                "attention": { "type": "integer", "minimum": 1 },
+                "authority": { "type": "integer", "minimum": 1 },
+                "momentum": { "type": "integer", "minimum": 1 }
+              }
+            }
+          }
+        },
+        "anti_gaming": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "max_metric_weight_in_dimension",
+            "caps",
+            "channel_caps",
+            "notes"
+          ],
+          "properties": {
+            "max_metric_weight_in_dimension": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 1,
+              "default": 0.4
+            },
+            "caps": {
+              "type": "array",
+              "items": { "$ref": "#/$defs/metric_cap_rule" }
+            },
+            "channel_caps": {
+              "type": "array",
+              "items": { "$ref": "#/$defs/channel_cap_rule" }
+            },
+            "notes": { "type": "string" }
+          }
+        },
+        "scoring_schedule": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["recompute_frequency", "timezone", "as_of_field"],
+          "properties": {
+            "recompute_frequency": {
+              "type": "string",
+              "enum": ["daily", "weekly", "biweekly", "monthly"]
+            },
+            "timezone": { "type": "string" },
+            "as_of_field": {
+              "type": "string",
+              "description": "Which field in tool.score.as_of should be treated as the official timestamp."
+            }
+          }
+        }
+      }
+    },
+    "dimension_definition": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["slug", "name", "description", "metrics"],
+      "properties": {
+        "slug": {
+          "type": "string",
+          "enum": [
+            "adoption",
+            "engagement",
+            "attention",
+            "authority",
+            "momentum"
+          ]
+        },
+        "name": { "type": "string" },
+        "description": { "type": "string" },
+        "metrics": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "$ref": "#/$defs/metric_definition" }
+        }
+      }
+    },
+    "metric_definition": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "name",
+        "dimension",
+        "data_type",
+        "unit",
+        "collection_window_days",
+        "applicability",
+        "normalization_method",
+        "weight_in_dimension",
+        "missing_policy",
+        "notes"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^[a-z0-9_]+$"
+        },
+        "name": { "type": "string" },
+        "dimension": {
+          "type": "string",
+          "enum": [
+            "adoption",
+            "engagement",
+            "attention",
+            "authority",
+            "momentum"
+          ]
+        },
+        "data_type": {
+          "type": "string",
+          "enum": [
+            "integer",
+            "number",
+            "boolean",
+            "percent",
+            "ordinal",
+            "string"
+          ]
+        },
+        "unit": {
+          "type": "string",
+          "enum": [
+            "count",
+            "seconds",
+            "ratio",
+            "percent",
+            "rank_delta",
+            "months",
+            "flag",
+            "text",
+            "usd"
+          ]
+        },
+        "collection_window_days": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "0 means point-in-time or static (e.g., company_registered)."
+        },
+        "applicability": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["scope", "condition"],
+          "properties": {
+            "scope": {
+              "type": "string",
+              "enum": [
+                "all_tools",
+                "if_app",
+                "if_extension",
+                "if_github",
+                "if_social_presence"
+              ]
+            },
+            "condition": {
+              "type": "string",
+              "description": "Human-readable condition (e.g., 'tool.platforms contains ios OR android')."
+            }
+          }
+        },
+        "normalization_method": {
+          "type": "string",
+          "enum": [
+            "percentile",
+            "log_percentile",
+            "rank_percentile",
+            "minmax",
+            "zscore",
+            "manual_mapping"
+          ]
+        },
+        "weight_in_dimension": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "missing_policy": {
+          "type": "string",
+          "enum": [
+            "neutral",
+            "dimension_reweight",
+            "impute_global",
+            "impute_metric"
+          ]
+        },
+        "notes": { "type": "string" },
+        "manual_mapping": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["type", "mapping"],
+          "properties": {
+            "type": {
+              "type": "string",
+              "enum": ["ordinal_to_score", "boolean_to_score"]
+            },
+            "mapping": {
+              "type": "array",
+              "items": { "$ref": "#/$defs/manual_map_item" }
+            }
+          }
+        }
+      }
+    },
+    "manual_map_item": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["input", "score"],
+      "properties": {
+        "input": { "type": ["string", "number", "boolean"] },
+        "score": { "type": "number", "minimum": 0, "maximum": 100 }
+      }
+    },
+    "normalization_method": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "method", "params"],
+      "properties": {
+        "id": { "type": "string", "pattern": "^[a-z0-9_]+$" },
+        "method": {
+          "type": "string",
+          "enum": [
+            "percentile",
+            "log_percentile",
+            "rank_percentile",
+            "minmax",
+            "zscore"
+          ]
+        },
+        "params": {
+          "type": "object",
+          "additionalProperties": true,
+          "description": "Method-specific parameters. Example: {\"log_base\": 10, \"winsor_p\": 0.01}."
+        }
+      }
+    },
+    "metric_cap_rule": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["metric_id", "cap_type", "cap_value", "notes"],
+      "properties": {
+        "metric_id": { "type": "string", "pattern": "^[a-z0-9_]+$" },
+        "cap_type": {
+          "type": "string",
+          "enum": ["max_score", "max_raw", "winsorize"]
+        },
+        "cap_value": { "type": "number" },
+        "notes": { "type": "string" }
+      }
+    },
+    "channel_cap_rule": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["channel", "max_contribution_percent", "notes"],
+      "properties": {
+        "channel": {
+          "type": "string",
+          "enum": [
+            "telegram",
+            "discord",
+            "slack",
+            "github",
+            "x",
+            "linkedin",
+            "reddit",
+            "youtube"
+          ]
+        },
+        "max_contribution_percent": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 100
+        },
+        "notes": { "type": "string" }
+      }
+    },
+    "tool": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "slug",
+        "name",
+        "category",
+        "platforms",
+        "links",
+        "raw_metrics",
+        "normalized_metrics",
+        "dimension_scores",
+        "score"
+      ],
+      "properties": {
+        "slug": { "type": "string", "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$" },
+        "name": { "type": "string" },
+        "category": { "type": "string" },
+        "platforms": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": [
+              "web",
+              "ios",
+              "android",
+              "desktop",
+              "api",
+              "extension",
+              "cli"
+            ]
+          }
+        },
+        "links": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["website"],
+          "properties": {
+            "website": { "type": "string", "format": "uri" },
+            "appstore": { "type": "string", "format": "uri" },
+            "playstore": { "type": "string", "format": "uri" },
+            "chrome_store": { "type": "string", "format": "uri" },
+            "github": { "type": "string", "format": "uri" },
+            "x": { "type": "string", "format": "uri" },
+            "linkedin": { "type": "string", "format": "uri" },
+            "reddit": { "type": "string", "format": "uri" },
+            "youtube": { "type": "string", "format": "uri" }
+          }
+        },
+        "raw_metrics": {
+          "type": "object",
+          "description": "Raw (un-normalized) metric values keyed by metric id.",
+          "additionalProperties": { "$ref": "#/$defs/raw_metric_value" }
+        },
+        "normalized_metrics": {
+          "type": "object",
+          "description": "0–100 metric scores keyed by metric id.",
+          "additionalProperties": { "$ref": "#/$defs/normalized_metric_value" }
+        },
+        "dimension_scores": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "adoption",
+            "engagement",
+            "attention",
+            "authority",
+            "momentum"
+          ],
+          "properties": {
+            "adoption": { "$ref": "#/$defs/scored_block" },
+            "engagement": { "$ref": "#/$defs/scored_block" },
+            "attention": { "$ref": "#/$defs/scored_block" },
+            "authority": { "$ref": "#/$defs/scored_block" },
+            "momentum": { "$ref": "#/$defs/scored_block" }
+          }
+        },
+        "score": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "ai_index_score",
+            "rank_global",
+            "as_of",
+            "methodology_version"
+          ],
+          "properties": {
+            "ai_index_score": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 100
+            },
+            "rank_global": { "type": "integer", "minimum": 1 },
+            "as_of": { "type": "string", "format": "date-time" },
+            "methodology_version": { "type": "string" }
+          }
+        }
+      }
+    },
+    "raw_metric_value": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "value",
+        "observed_at",
+        "window_days",
+        "source",
+        "confidence"
+      ],
+      "properties": {
+        "value": { "type": ["number", "integer", "boolean", "string", "null"] },
+        "observed_at": { "type": "string", "format": "date-time" },
+        "window_days": { "type": "integer", "minimum": 0 },
+        "source": {
+          "type": "string",
+          "description": "Where the value came from (e.g., similarweb_est, chrome_store, manual)."
+        },
+        "confidence": { "type": "number", "minimum": 0, "maximum": 1 },
+        "notes": { "type": "string" }
+      }
+    },
+    "normalized_metric_value": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "score_0_100",
+        "normalized_at",
+        "method",
+        "params",
+        "missing_handled_as"
+      ],
+      "properties": {
+        "score_0_100": {
+          "type": ["number", "null"],
+          "minimum": 0,
+          "maximum": 100
+        },
+        "normalized_at": { "type": "string", "format": "date-time" },
+        "method": {
+          "type": "string",
+          "enum": [
+            "percentile",
+            "log_percentile",
+            "rank_percentile",
+            "minmax",
+            "zscore",
+            "manual_mapping"
+          ]
+        },
+        "params": { "type": "object", "additionalProperties": true },
+        "missing_handled_as": {
+          "type": "string",
+          "enum": [
+            "not_missing",
+            "neutral",
+            "dimension_reweight",
+            "impute_global",
+            "impute_metric"
+          ]
+        }
+      }
+    },
+    "scored_block": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["score_0_100", "computed_at", "metrics_used", "notes"],
+      "properties": {
+        "score_0_100": { "type": "number", "minimum": 0, "maximum": 100 },
+        "computed_at": { "type": "string", "format": "date-time" },
+        "metrics_used": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["metric_id", "weight", "metric_score_0_100"],
+            "properties": {
+              "metric_id": { "type": "string", "pattern": "^[a-z0-9_]+$" },
+              "weight": { "type": "number", "minimum": 0, "maximum": 1 },
+              "metric_score_0_100": {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 100
+              }
+            }
+          }
+        },
+        "notes": { "type": "string" }
+      }
+    }
+  }
+}

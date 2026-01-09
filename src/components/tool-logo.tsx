@@ -4,7 +4,8 @@ import Image from "next/image";
 import { useState } from "react";
 
 interface ToolLogoProps {
-  name: string;
+  name?: string;
+  tool_name?: string;
   websiteUrl?: string;
   className?: string;
 }
@@ -39,18 +40,22 @@ function extractHostname(url: string): string | null {
 
 export default function ToolLogo({
   name,
+  tool_name,
   websiteUrl,
   className = "h-10 w-10",
 }: ToolLogoProps) {
   const [imageError, setImageError] = useState(false);
   const [imageLoaded, setImageLoaded] = useState(false);
 
+  // Use tool_name from database or name from seed data, with fallback
+  const displayName = name || tool_name || 'Tool';
+
   // Extract hostname from websiteUrl
   const hostname = websiteUrl ? extractHostname(websiteUrl) : null;
 
   // If no valid hostname, show initials fallback
   if (!hostname || imageError) {
-    const initials = name.substring(0, 1).toUpperCase();
+    const initials = displayName.substring(0, 1).toUpperCase();
     return (
       <div
         className={`${className} rounded-xl border border-slate-700 shadow-sm bg-slate-800 flex items-center justify-center text-white font-bold text-xs flex-shrink-0`}
@@ -67,7 +72,7 @@ export default function ToolLogo({
     <div className={`${className} relative rounded-xl border border-slate-700 shadow-sm bg-slate-800 overflow-hidden flex-shrink-0`}>
       <Image
         src={unavatarUrl}
-        alt={`${name} logo`}
+        alt={`${displayName} logo`}
         fill
         className="object-cover"
         onError={() => setImageError(true)}
@@ -77,7 +82,7 @@ export default function ToolLogo({
       {!imageLoaded && (
         <div className="absolute inset-0 flex items-center justify-center bg-slate-800">
           <span className="text-white font-bold text-xs">
-            {name.substring(0, 1).toUpperCase()}
+            {displayName.substring(0, 1).toUpperCase()}
           </span>
         </div>
       )}
