@@ -72,6 +72,9 @@ export default async function ToolPage({ params }: Props) {
       hasApi: dbTool?.has_api ?? seedTool?.specs?.hasApi ?? false,
       mobileApp: dbTool?.mobile_app ?? seedTool?.specs?.mobileApp ?? false,
     },
+    // Platforms
+    platforms: seedTool?.platforms || [],
+    platforms_string: dbTool?.platforms_string || seedTool?.platforms_string,
     // Keep database-specific fields for Market Index Score V1 calculation
     traffic_monthly_est: dbTool?.traffic_monthly_est,
     x_mentions_30d: dbTool?.x_mentions_30d,
@@ -79,7 +82,7 @@ export default async function ToolPage({ params }: Props) {
     ios_reviews_count: dbTool?.ios_reviews_count,
     android_installs_range: dbTool?.android_installs_range,
     android_reviews_count: dbTool?.android_reviews_count,
-  };
+  } as Tool;
 
   // Helper function to parse android_installs_range string (e.g., '100M+', '50K', '1B') to number
   const parseAndroidInstalls = (range: string | number | undefined | null): number => {
@@ -485,7 +488,7 @@ export default async function ToolPage({ params }: Props) {
           )}
 
           {/* Platforms */}
-          {tool.platforms_string && (
+          {tool?.platforms_string && (
             <div className="rounded-2xl border border-slate-800 bg-slate-900 p-6">
               <h3 className="text-sm font-semibold text-white mb-4 uppercase tracking-wider">
                 Platforms
