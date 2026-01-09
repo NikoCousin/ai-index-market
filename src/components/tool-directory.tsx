@@ -110,7 +110,7 @@ export default function ToolDirectory({
             </thead>
             <tbody className="divide-y divide-slate-100">
               {filteredTools.length > 0 ? (
-                filteredTools.map((tool, index) => (
+                filteredTools.map((tool: Tool, index: number) => (
                   <ToolRow key={tool.slug} tool={tool} index={startIndex + index} />
                 ))
               ) : (
@@ -128,7 +128,7 @@ export default function ToolDirectory({
       {/* Mobile Card View */}
       <div className="md:hidden space-y-4">
         {filteredTools.length > 0 ? (
-          filteredTools.map((tool, index) => (
+          filteredTools.map((tool: Tool, index: number) => (
             <MobileToolCard key={tool.slug} tool={tool} index={startIndex + index} />
           ))
         ) : (

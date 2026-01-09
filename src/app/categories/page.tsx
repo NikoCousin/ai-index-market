@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { loadSeed } from "@/lib/data";
+import { loadSeed, type Category } from "@/lib/data";
 
 export const revalidate = 3600;
 
@@ -27,7 +27,7 @@ export default function CategoriesIndexPage() {
 
       {/* Categories Grid */}
       <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-        {data.categories.map((category) => {
+        {data.categories.map((category: Category) => {
           const count = getToolCount(category.slug);
 
           return (

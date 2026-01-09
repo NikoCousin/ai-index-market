@@ -31,7 +31,7 @@ export default async function NewsSection() {
 
       {/* News Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {news.map((item) => (
+        {news.map((item: any) => (
           <NewsCard key={item.id} news={item as NewsItem} />
         ))}
       </div>

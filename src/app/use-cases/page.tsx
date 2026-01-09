@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { loadSeed } from "@/lib/data";
+import { loadSeed, type Category } from "@/lib/data";
 
 export const revalidate = 3600;
 
@@ -27,7 +27,7 @@ export default function UseCasesIndexPage() {
 
       {/* Use Cases Grid */}
       <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-        {data.useCases.map((useCase) => {
+        {data.useCases.map((useCase: { name: string; slug: string }) => {
           const count = getToolCount(useCase.slug);
 
           return (

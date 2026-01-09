@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { blogPosts } from "@/lib/blog-data";
+import { blogPosts, type BlogPost } from "@/lib/blog-data";
 
 export const metadata = {
   title: "AI News & Insights | IndexMarket Blog",
@@ -28,7 +28,7 @@ export default function BlogIndexPage() {
 
       {/* Blog Grid */}
       <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-        {blogPosts.map((post) => (
+        {blogPosts.map((post: BlogPost) => (
           <Link
             key={post.slug}
             href={`/blog/${post.slug}`}

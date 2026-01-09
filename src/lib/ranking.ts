@@ -199,7 +199,7 @@ export async function getRankedTools(): Promise<Tool[]> {
   const voteCountsMap = await getVoteCounts();
 
   // Merge database tools with seed data and calculate Market Index Score
-  const rankedTools: Tool[] = dbTools.map((dbTool) => {
+  const rankedTools: Tool[] = dbTools.map((dbTool: any) => {
     const seedTool = seedToolsMap.get(dbTool.tool_slug || dbTool.slug);
     
     // Calculate Market Index Score V1
@@ -271,7 +271,7 @@ export async function getRankedTools(): Promise<Tool[]> {
   // If no database tools, fallback to seed data with old calculation
   if (rankedTools.length === 0) {
     const tools = seed.tools;
-    const fallbackTools = tools.map((tool) => {
+    const fallbackTools = tools.map((tool: Tool) => {
       const voteCounts = voteCountsMap.get(tool.slug) || {
         totalVotes: 0,
         recentVotes: 0,

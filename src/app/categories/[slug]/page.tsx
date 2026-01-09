@@ -53,10 +53,10 @@ export default async function CategoryPage({ params }: Props) {
   const dbTools = await getToolsByCategory(categoryName);
   
   // Create a map of seed tools for fallback
-  const seedToolsMap = new Map(seed.tools.map(t => [t.slug, t]));
+  const seedToolsMap = new Map(seed.tools.map((t: Tool) => [t.slug, t]));
 
   // Merge database tools with seed data and calculate Market Index Score
-  const tools: Tool[] = dbTools.map((dbTool) => {
+  const tools: Tool[] = dbTools.map((dbTool: any) => {
     const seedTool = seedToolsMap.get(dbTool.tool_slug || dbTool.slug);
     
     // Calculate Market Index Score V1

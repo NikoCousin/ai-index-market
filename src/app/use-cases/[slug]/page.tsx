@@ -27,7 +27,7 @@ export default async function UseCasePage({ params }: Props) {
   // FORMATTING: Convert slug "content-creation" -> "Content Creation"
   const useCaseName = slug
     .split("-")
-    .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+    .map((word: string) => word.charAt(0).toUpperCase() + word.slice(1))
     .join(" ");
 
   // FILTERING: Logic to find tools for this use case
