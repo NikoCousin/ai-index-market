@@ -16,8 +16,7 @@ export default function Footer() {
               </span>
             </Link>
             <p className="text-slate-400 text-sm leading-relaxed">
-              The world's most trusted index for AI tools, APIs, and plugins.
-              Track market movements in real-time.
+              An index for AI tools, APIs, and platforms.
             </p>
           </div>
 
@@ -72,36 +71,19 @@ export default function Footer() {
             <h3 className="font-semibold text-white mb-4">Resources</h3>
             <ul className="space-y-3 text-sm text-slate-400">
               <li>
-                <Link
-                  href="#"
-                  className="hover:text-blue-400 transition-colors"
-                >
+                <span className="text-slate-500 cursor-not-allowed">
                   Documentation
-                </Link>
+                </span>
               </li>
               <li>
-                <Link
-                  href="#"
-                  className="hover:text-blue-400 transition-colors"
-                >
+                <span className="text-slate-500 cursor-not-allowed">
                   API Reference
-                </Link>
+                </span>
               </li>
               <li>
-                <Link
-                  href="#"
-                  className="hover:text-blue-400 transition-colors"
-                >
-                  Blog
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="#"
-                  className="hover:text-blue-400 transition-colors"
-                >
+                <span className="text-slate-500 cursor-not-allowed">
                   Community
-                </Link>
+                </span>
               </li>
             </ul>
           </div>
@@ -126,12 +108,9 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
-                <Link
-                  href="#"
-                  className="hover:text-blue-400 transition-colors"
-                >
+                <span className="text-slate-500 cursor-not-allowed">
                   Cookie Policy
-                </Link>
+                </span>
               </li>
             </ul>
           </div>
@@ -140,28 +119,19 @@ export default function Footer() {
         {/* Bottom Bar */}
         <div className="border-t border-slate-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-slate-500 text-sm">
-            © 2024 IndexMarket Inc. All rights reserved.
+            © 2025 IndexAiMarket. All rights reserved.
           </p>
           <div className="flex items-center gap-6">
             {/* Social Placeholders */}
-            <a
-              href="#"
-              className="text-slate-500 hover:text-white transition-colors min-h-[44px] min-w-[44px] flex items-center justify-center"
-            >
-              Twitter
-            </a>
-            <a
-              href="#"
-              className="text-slate-500 hover:text-white transition-colors min-h-[44px] min-w-[44px] flex items-center justify-center"
-            >
+            <span className="text-slate-500 cursor-not-allowed min-h-[44px] min-w-[44px] flex items-center justify-center">
+              X
+            </span>
+            <span className="text-slate-500 cursor-not-allowed min-h-[44px] min-w-[44px] flex items-center justify-center">
               GitHub
-            </a>
-            <a
-              href="#"
-              className="text-slate-500 hover:text-white transition-colors min-h-[44px] min-w-[44px] flex items-center justify-center"
-            >
-              Discord
-            </a>
+            </span>
+            <span className="text-slate-500 cursor-not-allowed min-h-[44px] min-w-[44px] flex items-center justify-center">
+              LinkedIn
+            </span>
           </div>
         </div>
       </div>
