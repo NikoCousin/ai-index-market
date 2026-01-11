@@ -1,9 +1,10 @@
 "use client";
 
-import { useState, ReactNode } from "react";
+import { useState, ReactNode, useRef, useEffect } from "react";
 import Link from "next/link";
 import { Tool } from "@/lib/data";
 import ToolLogo from "@/components/tool-logo";
+import { Info } from "lucide-react";
 
 // ✅ Added 'children' prop here to accept the Stats
 export default function ToolDirectory({
@@ -104,14 +105,21 @@ export default function ToolDirectory({
                   Pricing
                 </th>
                 <th className="px-4 py-4 font-medium text-slate-500">
-                  AI Index
+                  <div className="flex items-center gap-1.5">
+                    <span>AI Index</span>
+                    <TooltipIcon />
+                  </div>
                 </th>
               </tr>
             </thead>
             <tbody className="divide-y divide-slate-100">
               {filteredTools.length > 0 ? (
                 filteredTools.map((tool: Tool, index: number) => (
-                  <ToolRow key={tool.slug} tool={tool} index={startIndex + index} />
+                  <ToolRow
+                    key={tool.slug}
+                    tool={tool}
+                    index={startIndex + index}
+                  />
                 ))
               ) : (
                 <tr>
@@ -129,7 +137,11 @@ export default function ToolDirectory({
       <div className="md:hidden space-y-4">
         {filteredTools.length > 0 ? (
           filteredTools.map((tool: Tool, index: number) => (
-            <MobileToolCard key={tool.slug} tool={tool} index={startIndex + index} />
+            <MobileToolCard
+              key={tool.slug}
+              tool={tool}
+              index={startIndex + index}
+            />
           ))
         ) : (
           <div className="text-center py-12 text-slate-500 bg-white rounded-xl border border-slate-200 p-8">
@@ -137,6 +149,56 @@ export default function ToolDirectory({
           </div>
         )}
       </div>
+    </div>
+  );
+}
+
+// ⬇️ TOOLTIP ICON COMPONENT
+function TooltipIcon() {
+  const [isOpen, setIsOpen] = useState(false);
+  const tooltipRef = useRef<HTMLDivElement>(null);
+
+  // Close tooltip when clicking outside
+  useEffect(() => {
+    function handleClickOutside(event: MouseEvent) {
+      if (
+        tooltipRef.current &&
+        !tooltipRef.current.contains(event.target as Node)
+      ) {
+        setIsOpen(false);
+      }
+    }
+
+    if (isOpen) {
+      document.addEventListener("mousedown", handleClickOutside);
+      return () =>
+        document.removeEventListener("mousedown", handleClickOutside);
+    }
+  }, [isOpen]);
+
+  return (
+    <div className="relative inline-flex items-center" ref={tooltipRef}>
+      <button
+        onClick={(e) => {
+          e.stopPropagation();
+          setIsOpen(!isOpen);
+        }}
+        className="inline-flex items-center"
+        type="button"
+      >
+        <Info className="w-4 h-4 text-slate-500 hover:text-slate-700 cursor-pointer transition-colors flex-shrink-0" />
+      </button>
+      {isOpen && (
+        <div className="absolute top-full left-1/2 -translate-x-1/2 mt-2 z-50">
+          <div className="bg-slate-900 text-white text-xs rounded-lg py-2 px-3 shadow-xl border border-slate-700 whitespace-normal max-w-[320px] text-left">
+            A weighted score based on monthly web traffic, social media
+            presence, and mobile app performance.
+            <div className="absolute bottom-full left-1/2 -translate-x-1/2 -mb-px">
+              <div className="border-4 border-transparent border-b-slate-900"></div>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
@@ -182,8 +244,8 @@ function ToolRow({ tool, index }: { tool: Tool; index: number }) {
       </td>
       <td className="px-4 py-4">
         <span className="font-bold text-slate-900 tabular-nums">
-          {tool.marketIndexScore !== undefined 
-            ? tool.marketIndexScore 
+          {tool.marketIndexScore !== undefined
+            ? tool.marketIndexScore
             : tool.indexScore || tool.score?.rankScore?.toFixed(1) || "-"}
         </span>
       </td>
@@ -236,8 +298,8 @@ function MobileToolCard({ tool, index }: { tool: Tool; index: number }) {
             <div className="flex items-center gap-4 text-xs text-slate-600">
               <span className="font-bold text-slate-900 tabular-nums">
                 AI Market Index:{" "}
-                {tool.marketIndexScore !== undefined 
-                  ? tool.marketIndexScore 
+                {tool.marketIndexScore !== undefined
+                  ? tool.marketIndexScore
                   : tool.indexScore || tool.score?.rankScore?.toFixed(1) || "-"}
               </span>
             </div>
